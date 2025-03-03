@@ -1,0 +1,173 @@
+"""
+Estructura para crear una nueva criatura dentro de un mundo.
+"""
+input CreateCreatureInput {
+    """
+    ID del mundo al que pertenece la criatura.
+    """
+    worldId: ID!
+
+    """
+    Nombre de la criatura.
+    """
+    name: String!
+
+    """
+    Descripción detallada de la criatura, incluyendo características únicas y comportamiento.
+    """
+    description: String!
+
+    """
+    Tipo de entidad, útil para clasificar criaturas en el sistema.
+    """
+    type: String!
+
+    """
+    Especie o categoría de la criatura (dragón, gólem, quimera, etc.).
+    """
+    species: String!
+
+    """
+    Nivel de inteligencia de la criatura (bestia, sapiente, semisapiente, etc.).
+    """
+    intelligenceLevel: String!
+
+    # Atributos físicos y estado
+    """
+    Altura de la criatura en metros (m).
+    """
+    height: Float!
+
+    """
+    Peso de la criatura en kilogramos (kg).
+    """
+    weight: Float!
+
+    """
+    Fecha de nacimiento de la criatura en formato ISO 8601 (YYYY-MM-DD).
+    """
+    birthDate: String!
+
+    """
+    Indica si la criatura está viva (true) o muerta (false).
+    """
+    isAlive: Boolean!
+
+    """
+    Esperanza de vida aproximada de la criatura en años.
+    """
+    lifespan: Int
+
+    """
+    Indica si la criatura es única o pertenece a una especie con múltiples individuos.
+    """
+    isUnique: Boolean!
+
+    # Hábitat y comportamiento
+    """
+    Ambiente donde la criatura vive (bosques, montañas, océanos, etc.).
+    """
+    habitat: String!
+
+    """
+    Comportamiento de la criatura (pacífica, territorial, agresiva, etc.).
+    """
+    behavior: String!
+
+    """
+    Dieta de la criatura (carnívora, herbívora, omnívora, etc.).
+    """
+    diet: String!
+
+    """
+    Lista de habilidades especiales que posee la criatura (aliento de fuego, regeneración, telepatía, etc.).
+    """
+    abilities: [String!]!
+}
+
+"""
+Estructura para actualizar una criatura existente.
+"""
+input UpdateCreatureInput {
+    """
+    ID de la criatura a modificar.
+    """
+    id: ID!
+
+    """
+    Nuevo nombre de la criatura (opcional).
+    """
+    name: String
+
+    """
+    Nueva descripción de la criatura (opcional).
+    """
+    description: String
+
+    """
+    Modificar el tipo de la criatura (opcional).
+    """
+    type: String
+
+    """
+    Modificar la especie de la criatura (opcional).
+    """
+    species: String
+
+    """
+    Modificar el nivel de inteligencia de la criatura (opcional).
+    """
+    intelligenceLevel: String
+
+    # Atributos físicos y estado
+    """
+    Modificar la altura de la criatura (opcional).
+    """
+    height: Float
+
+    """
+    Modificar el peso de la criatura (opcional).
+    """
+    weight: Float
+
+    """
+    Modificar la fecha de nacimiento de la criatura (opcional).
+    """
+    birthDate: String
+
+    """
+    Modificar si la criatura está viva o muerta (opcional).
+    """
+    isAlive: Boolean
+
+    """
+    Modificar la esperanza de vida de la criatura (opcional).
+    """
+    lifespan: Int
+
+    """
+    Modificar si la criatura es única o no (opcional).
+    """
+    isUnique: Boolean
+
+    # Hábitat y comportamiento
+    """
+    Modificar el hábitat de la criatura (opcional).
+    """
+    habitat: String
+
+    """
+    Modificar el comportamiento de la criatura (opcional).
+    """
+    behavior: String
+
+    """
+    Modificar la dieta de la criatura (opcional).
+    """
+    diet: String
+
+    """
+    Modificar las habilidades de la criatura (opcional).
+    """
+    abilities: [String!]
+}

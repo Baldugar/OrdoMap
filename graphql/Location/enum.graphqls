@@ -1,0 +1,199 @@
+"""
+Clasifica las ubicaciones según su naturaleza y propósito.
+Incluye ciudades, mazmorras, asentamientos y entornos naturales.
+"""
+enum LocationType {
+    # Asentamientos y ciudades
+    """
+    Una ciudad grande con estructuras avanzadas y una alta población.
+    """
+    CITY
+
+    """
+    Una pequeña aldea o comunidad rural.
+    """
+    VILLAGE
+
+    """
+    Un castillo o fortaleza con fines defensivos o administrativos.
+    """
+    FORTRESS
+
+    """
+    Un puesto comercial o enclave en una zona aislada.
+    """
+    OUTPOST
+
+    # Entornos naturales
+    """
+    Un bosque denso con vegetación abundante.
+    """
+    FOREST
+
+    """
+    Una región desértica con escasez de agua y temperaturas extremas.
+    """
+    DESERT
+
+    """
+    Una cueva natural o sistema de cavernas subterráneas.
+    """
+    CAVE
+
+    """
+    Un cuerpo de agua, como un lago, río o mar.
+    """
+    WATER_BODY
+
+    """
+    Una cadena montañosa o área rocosa con elevaciones pronunciadas.
+    """
+    MOUNTAINS
+
+    """
+    Una isla o archipiélago rodeado de agua.
+    """
+    ISLAND
+
+    """
+    Una zona pantanosa con terrenos inestables y humedad alta.
+    """
+    SWAMP
+
+    # Lugares artificiales y místicos
+    """
+    Una mazmorra o estructura subterránea con secretos ocultos.
+    """
+    DUNGEON
+
+    """
+    Un templo o santuario con significado religioso o espiritual.
+    """
+    TEMPLE
+
+    """
+    Un portal interdimensional o conexión con otro plano de existencia.
+    """
+    PORTAL
+
+    """
+    Un laboratorio o taller donde se realizan experimentos científicos o mágicos.
+    """
+    LABORATORY
+}
+
+"""
+Define el nivel de accesibilidad de una ubicación.
+Indica si es pública, restringida, oculta o de difícil acceso.
+"""
+enum LocationAccessibility {
+    """
+    Ubicación de libre acceso para cualquier persona.
+    """
+    PUBLIC
+
+    """
+    Ubicación restringida, accesible solo para ciertos grupos o con permisos especiales.
+    """
+    RESTRICTED
+
+    """
+    Ubicación oculta o secreta, su existencia no es de conocimiento público.
+    """
+    HIDDEN
+
+    """
+    Ubicación de acceso extremadamente difícil por razones naturales o mágicas.
+    """
+    INACCESSIBLE
+}
+
+"""
+Define la relación entre dos ubicaciones.
+Puede representar conexiones geográficas, políticas o mágicas.
+"""
+enum LocationLocationRelation {
+    """
+    Una ubicación está dentro de otra (ej. ciudad dentro de un reino).
+    """
+    CONTAINED_WITHIN
+
+    """
+    Las ubicaciones están conectadas por caminos, túneles o portales.
+    """
+    CONNECTED
+
+    """
+    Una ubicación es la capital o centro administrativo de otra.
+    """
+    CAPITAL
+
+    """
+    Las ubicaciones son rivales o han tenido conflictos históricos.
+    """
+    RIVALRY
+}
+
+"""
+Define la relación entre una ubicación y un evento.
+Puede representar batallas, desastres, fundaciones y más.
+"""
+enum LocationEventRelation {
+    """
+    El evento ocurrió en esta ubicación.
+    """
+    OCCURRED_HERE
+
+    """
+    La ubicación fue destruida o gravemente afectada por el evento.
+    """
+    DESTROYED
+
+    """
+    El evento llevó a la fundación de la ubicación.
+    """
+    FOUNDED
+
+    """
+    La ubicación fue abandonada como resultado del evento.
+    """
+    ABANDONED
+}
+
+"""
+Define la relación entre una ubicación y un mundo.
+Puede representar su existencia, influencia interdimensional y más.
+"""
+enum LocationWorldRelation {
+    # Existencia y origen
+    """
+    La ubicación es originaria de este mundo.
+    """
+    NATIVE
+
+    """
+    La ubicación fue creada artificialmente en este mundo.
+    """
+    ARTIFICIAL
+
+    """
+    La ubicación existe en múltiples mundos al mismo tiempo (multiversal, interdimensional).
+    """
+    MULTIVERSE_EXISTENCE
+
+    # Conexiones y accesibilidad
+    """
+    La ubicación tiene portales o conexiones con este mundo.
+    """
+    CONNECTED
+
+    """
+    La ubicación es inaccesible desde este mundo sin medios especiales.
+    """
+    INACCESSIBLE
+
+    """
+    La ubicación es una anomalía dentro del mundo (cambio de realidad, error mágico).
+    """
+    ANOMALY
+}

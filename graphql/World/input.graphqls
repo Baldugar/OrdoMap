@@ -1,0 +1,149 @@
+"""
+Estructura para crear un nuevo mundo dentro de un universo.
+"""
+input CreateWorldInput {
+    """
+    ID del universo al que pertenece el mundo.
+    """
+    universeId: ID!
+
+    """
+    Nombre del mundo.
+    """
+    name: String!
+
+    """
+    Descripción detallada del mundo, incluyendo historia y características únicas.
+    """
+    description: String!
+
+    """
+    Clasificación del mundo según su naturaleza y origen.
+    """
+    type: WorldType!
+
+    """
+    Nivel tecnológico predominante en el mundo (medieval, avanzado, mágico, etc.).
+    """
+    technologyLevel: String!
+
+    """
+    Principales fuentes de energía utilizadas en el mundo.
+    """
+    energySources: [String!]!
+
+    """
+    Gravedad relativa del mundo en comparación con la Tierra (1.0 = gravedad terrestre).
+    """
+    gravity: Float!
+
+    """
+    Tamaño del mundo en relación a la Tierra (1.0 = tamaño terrestre).
+    """
+    size: Float!
+
+    """
+    Número de lunas o satélites naturales del mundo.
+    """
+    moons: Int!
+
+    """
+    Número de soles o estrellas alrededor de las cuales orbita el mundo.
+    """
+    stars: Int!
+
+    """
+    Clima predominante del mundo.
+    """
+    climate: String!
+
+    """
+    Ecosistema y bioma dominante del mundo.
+    """
+    ecosystem: String!
+
+    """
+    Indica si el mundo tiene atmósfera y si es respirable por humanos.
+    """
+    hasAtmosphere: Boolean!
+
+    """
+    Indica si el mundo está habitado por seres vivos.
+    """
+    isHabitable: Boolean!
+}
+
+"""
+Estructura para actualizar un mundo existente.
+"""
+input UpdateWorldInput {
+    """
+    ID del mundo a modificar.
+    """
+    id: ID!
+
+    """
+    Nuevo nombre del mundo (opcional).
+    """
+    name: String
+
+    """
+    Nueva descripción del mundo (opcional).
+    """
+    description: String
+
+    """
+    Modificar la clasificación del mundo (opcional).
+    """
+    type: WorldType
+
+    """
+    Modificar el nivel tecnológico del mundo (opcional).
+    """
+    technologyLevel: String
+
+    """
+    Modificar las fuentes de energía utilizadas en el mundo (opcional).
+    """
+    energySources: [String!]
+
+    """
+    Modificar la gravedad del mundo (opcional).
+    """
+    gravity: Float
+
+    """
+    Modificar el tamaño del mundo en relación a la Tierra (opcional).
+    """
+    size: Float
+
+    """
+    Modificar el número de lunas del mundo (opcional).
+    """
+    moons: Int
+
+    """
+    Modificar el número de estrellas alrededor del mundo (opcional).
+    """
+    stars: Int
+
+    """
+    Modificar el clima del mundo (opcional).
+    """
+    climate: String
+
+    """
+    Modificar el ecosistema y bioma del mundo (opcional).
+    """
+    ecosystem: String
+
+    """
+    Modificar si el mundo tiene atmósfera y si es respirable (opcional).
+    """
+    hasAtmosphere: Boolean
+
+    """
+    Modificar si el mundo es habitable (opcional).
+    """
+    isHabitable: Boolean
+}

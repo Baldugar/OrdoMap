@@ -1,0 +1,386 @@
+"""
+Clasifica las facciones según su estructura y propósito.
+Incluye gobiernos, cultos, gremios, clanes, ejércitos y más.
+"""
+enum FactionType {
+    # Estructuras de gobierno y poder
+    """
+    Una nación o reino gobernado por una autoridad central.
+    """
+    NATION
+
+    """
+    Un estado independiente o ciudad-estado con gobierno propio.
+    """
+    CITY_STATE
+
+    """
+    Un imperio con dominio sobre múltiples territorios.
+    """
+    EMPIRE
+
+    """
+    Un grupo de resistencia o revolución contra el poder establecido.
+    """
+    REBELLION
+
+    # Grupos ideológicos y religiosos
+    """
+    Una organización religiosa con dogmas y seguidores.
+    """
+    RELIGIOUS_ORDER
+
+    """
+    Un culto dedicado a una deidad, entidad o creencia específica.
+    """
+    CULT
+
+    """
+    Una hermandad secreta o sociedad con propósitos ocultos.
+    """
+    SECRET_SOCIETY
+
+    # Organizaciones militares y mercenarias
+    """
+    Un ejército formal al servicio de un estado o gobernante.
+    """
+    MILITARY
+
+    """
+    Un grupo de mercenarios que ofrece servicios de combate o protección.
+    """
+    MERCENARY_COMPANY
+
+    """
+    Una banda de saqueadores, piratas o criminales organizados.
+    """
+    RAIDERS
+
+    # Grupos económicos y comerciales
+    """
+    Un gremio de artesanos, comerciantes o profesionales.
+    """
+    GUILD
+
+    """
+    Una megacorporación o grupo empresarial con gran influencia económica.
+    """
+    MEGACORPORATION
+
+    # Clanes y grupos tribales
+    """
+    Una tribu con una cultura propia y gobierno descentralizado.
+    """
+    TRIBE
+
+    """
+    Un clan familiar con influencia en una región o esfera de poder.
+    """
+    CLAN
+}
+
+"""
+Indica el estado actual de la facción en la historia.
+Puede estar activa, disuelta, exiliada, entre otros.
+"""
+enum FactionStatus {
+    """
+    La facción sigue operativa y tiene actividad en el mundo.
+    """
+    ACTIVE
+
+    """
+    La facción se ha disuelto y ya no existe como organización.
+    """
+    DISBANDED
+
+    """
+    La facción fue exiliada y ya no tiene territorio propio.
+    """
+    EXILED
+
+    """
+    La facción opera en secreto y no es reconocida públicamente.
+    """
+    UNDERGROUND
+
+    """
+    La facción está en decadencia y perdiendo influencia.
+    """
+    DECLINING
+
+    """
+    La facción está en auge y expandiendo su poder.
+    """
+    ASCENDING
+}
+
+"""
+Indica el nivel de influencia de la facción en el mundo o sociedad.
+Determina su relevancia histórica y social.
+"""
+enum FactionInfluence {
+    """
+    Facción menor con presencia local o influencia limitada.
+    """
+    MINOR
+
+    """
+    Facción con una influencia considerable en una región o sector de la sociedad.
+    """
+    REGIONAL
+
+    """
+    Facción con impacto significativo en múltiples regiones o áreas de poder.
+    """
+    MAJOR
+
+    """
+    Facción de importancia global o interdimensional.
+    """
+    WORLDWIDE
+}
+
+"""
+Define la relación entre dos facciones.
+Puede representar alianzas, enemistades, subordinación y competencia.
+"""
+enum FactionFactionRelation {
+    # Relaciones de cooperación
+    """
+    Las facciones están aliadas y colaboran activamente.
+    """
+    ALLIED
+
+    """
+    Una facción está subordinada a otra.
+    """
+    VASSAL
+
+    """
+    Ambas facciones tienen un pacto de no agresión o comercio.
+    """
+    NEUTRAL_PACT
+
+    # Relaciones de conflicto
+    """
+    Las facciones son enemigas y están en guerra o conflicto activo.
+    """
+    ENEMY
+
+    """
+    Una facción busca la destrucción o disolución de la otra.
+    """
+    RIVALRY
+
+    """
+    Las facciones tienen desacuerdos políticos, económicos o ideológicos.
+    """
+    TENSION
+
+    # Relaciones diplomáticas
+    """
+    Una facción ha sido absorbida por otra y ya no existe como entidad independiente.
+    """
+    ABSORBED
+
+    """
+    Las facciones están en tregua temporal tras un conflicto.
+    """
+    TRUCE
+}
+
+"""
+Define la relación entre una facción y un evento.
+Puede representar participación en batallas, diplomacia, rebeliones y más.
+"""
+enum FactionEventRelation {
+    # Participación activa
+    """
+    La facción inició o provocó el evento.
+    """
+    INITIATOR
+
+    """
+    La facción participó activamente en el evento.
+    """
+    PARTICIPANT
+
+    """
+    La facción organizó el evento, pero no participó directamente.
+    """
+    ORGANIZER
+
+    # Relaciones de conflicto o respuesta
+    """
+    La facción intentó evitar o detener el evento.
+    """
+    OPPOSER
+
+    """
+    La facción sufrió las consecuencias del evento.
+    """
+    AFFECTED
+
+    """
+    La facción usó el evento como una oportunidad política o económica.
+    """
+    OPPORTUNIST
+
+    # Relaciones diplomáticas
+    """
+    El evento llevó a la facción a hacer un tratado de paz o alianza.
+    """
+    DIPLOMATIC_SHIFT
+
+    """
+    El evento causó la disolución de la facción.
+    """
+    DISSOLUTION
+}
+
+"""
+Define la relación entre una facción y un ítem.
+Puede representar reliquias, símbolos de poder, armamento y más.
+"""
+enum FactionItemRelation {
+    # Relaciones de posesión y uso
+    """
+    El ítem es un símbolo de poder o autoridad de la facción.
+    """
+    SYMBOL
+
+    """
+    El ítem es una reliquia sagrada o de gran valor para la facción.
+    """
+    RELIC
+
+    """
+    El ítem es parte del armamento de la facción.
+    """
+    WEAPON
+
+    """
+    El ítem es un documento, tratado o código legal de la facción.
+    """
+    DOCUMENT
+
+    # Relaciones históricas y mitológicas
+    """
+    El ítem está vinculado a la historia de la facción.
+    """
+    HISTORICAL
+
+    """
+    El ítem tiene un valor cultural o religioso para la facción.
+    """
+    CULTURAL
+}
+
+"""
+Define la relación entre una facción y una ubicación.
+Puede representar dominio, influencia, exilio y más.
+"""
+enum FactionLocationRelation {
+    # Relaciones de control y dominio
+    """
+    La facción controla la ubicación como su territorio principal.
+    """
+    CAPITAL
+
+    """
+    La facción posee la ubicación como parte de su territorio.
+    """
+    OWNED
+
+    """
+    La facción ejerce influencia política, económica o militar en la ubicación.
+    """
+    INFLUENCE
+
+    # Relaciones de conflicto y exilio
+    """
+    La facción perdió la ubicación tras un conflicto o caída de poder.
+    """
+    LOST_TERRITORY
+
+    """
+    La facción fue exiliada de esta ubicación y no puede regresar.
+    """
+    EXILED
+
+    """
+    La facción intenta conquistar la ubicación.
+    """
+    CONQUERING
+
+    """
+    La facción ha ocupado temporalmente la ubicación mediante fuerza militar o diplomacia.
+    """
+    OCCUPIED
+
+    # Relaciones neutrales y estratégicas
+    """
+    La facción tiene presencia en la ubicación, pero no la controla.
+    """
+    OUTPOST
+
+    """
+    La facción considera la ubicación sagrada o importante por razones religiosas o culturales.
+    """
+    SACRED_SITE
+}
+
+"""
+Define la relación entre una facción y un mundo.
+Puede representar su origen, dominio, influencia interdimensional y más.
+"""
+enum FactionWorldRelation {
+    # Existencia y origen
+    """
+    La facción fue fundada en este mundo y es nativa de él.
+    """
+    NATIVE
+
+    """
+    La facción se expandió a este mundo desde otro plano de existencia.
+    """
+    EXPANDED
+
+    """
+    La facción gobierna o tiene control absoluto sobre este mundo.
+    """
+    RULER
+
+    """
+    La facción ha sido exiliada de este mundo y no puede regresar.
+    """
+    EXILED
+
+    # Influencia y operaciones
+    """
+    La facción tiene influencia política, económica o militar en este mundo.
+    """
+    INFLUENCE
+
+    """
+    La facción opera en este mundo, pero sin un territorio propio.
+    """
+    OPERATES_HERE
+
+    """
+    La facción ha sido eliminada de este mundo y ya no existe en él.
+    """
+    ERADICATED
+
+    # Conexiones interdimensionales
+    """
+    La facción usa este mundo como punto de acceso para otros planos o dimensiones.
+    """
+    INTERPLANAR_BASE
+
+    """
+    La facción es una anomalía en este mundo y no pertenece a su realidad.
+    """
+    ANOMALY
+}

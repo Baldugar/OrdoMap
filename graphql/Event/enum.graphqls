@@ -1,0 +1,219 @@
+"""
+Clasifica los eventos según su naturaleza.
+Puede representar batallas, descubrimientos, rituales, catástrofes y otros sucesos.
+"""
+enum EventType {
+    # Eventos históricos y políticos
+    """
+    Un evento donde se produce un conflicto armado entre facciones o naciones.
+    """
+    BATTLE
+
+    """
+    Un tratado, negociación o evento diplomático entre entidades.
+    """
+    DIPLOMATIC_EVENT
+
+    """
+    Un golpe de estado, revolución o cambio radical de poder.
+    """
+    POLITICAL_UPHEAVAL
+
+    # Eventos de exploración y descubrimiento
+    """
+    Un evento donde se descubre un nuevo territorio o lugar significativo.
+    """
+    DISCOVERY
+
+    """
+    Un evento donde se revela información crucial para la historia.
+    """
+    REVELATION
+
+    # Eventos religiosos y mágicos
+    """
+    Un ritual realizado con propósitos religiosos, mágicos o esotéricos.
+    """
+    RITUAL
+
+    """
+    Una profecía que influye en la historia del mundo.
+    """
+    PROPHECY
+
+    """
+    Un evento donde una entidad divina interviene en el mundo.
+    """
+    DIVINE_INTERVENTION
+
+    # Catástrofes y desastres
+    """
+    Un desastre natural (terremoto, erupción volcánica, tsunami, etc.).
+    """
+    NATURAL_DISASTER
+
+    """
+    Una pandemia o plaga que afecta a una región o población.
+    """
+    PLAGUE
+
+    """
+    Un evento en el que se produce un incendio de gran magnitud.
+    """
+    FIRE
+
+    """
+    Un evento en el que se genera caos y destrucción por causas no naturales.
+    """
+    CALAMITY
+
+    # Eventos culturales y sociales
+    """
+    Un evento festivo, celebración o competencia deportiva.
+    """
+    FESTIVAL
+
+    """
+    Un evento académico, científico o reunión intelectual relevante.
+    """
+    SCHOLARLY_EVENT
+
+    """
+    Un juicio o evento de condena pública.
+    """
+    TRIAL
+
+    # Eventos sobrenaturales o inexplicables
+    """
+    Un evento paranormal o que desafía la lógica del mundo.
+    """
+    SUPERNATURAL_EVENT
+
+    """
+    Un evento donde se abre un portal a otra dimensión o plano.
+    """
+    INTERDIMENSIONAL_RIFT
+}
+
+"""
+Indica la importancia de un evento dentro de la historia.
+Puede determinar su impacto en la narrativa del mundo.
+"""
+enum EventSignificance {
+    """
+    Un evento menor con impacto limitado en la historia general.
+    """
+    LOW
+
+    """
+    Un evento de relevancia media que afecta a una región o a un grupo importante de personajes.
+    """
+    MEDIUM
+
+    """
+    Un evento crucial que cambia la historia del mundo de forma permanente.
+    """
+    HIGH
+}
+
+"""
+Define la relación entre dos eventos.
+Puede representar causalidad, continuidad, interdependencia o influencia entre eventos.
+"""
+enum EventEvent {
+    # Relaciones de causalidad
+    """
+    El evento A causó directamente el evento B.
+    """
+    CAUSE
+
+    """
+    El evento B ocurrió como consecuencia del evento A.
+    """
+    CONSEQUENCE
+
+    """
+    El evento B es una reacción directa al evento A (ej. represalia, respuesta diplomática).
+    """
+    RESPONSE
+
+    # Relaciones de continuidad
+    """
+    El evento B es una continuación lógica del evento A.
+    """
+    CONTINUATION
+
+    """
+    El evento B es una repetición o iteración del evento A.
+    """
+    REOCCURRENCE
+
+    """
+    El evento B se produce en paralelo con el evento A, sin que uno cause al otro.
+    """
+    PARALLEL
+
+    # Relaciones de influencia
+    """
+    El evento A inspiró o motivó el evento B sin ser su causa directa.
+    """
+    INSPIRATION
+
+    """
+    El evento A y el evento B están profetizados como parte de un mismo ciclo.
+    """
+    PROPHECY_LINK
+
+    """
+    Ambos eventos están mágicamente o sobrenaturalmente conectados.
+    """
+    SUPERNATURAL_LINK
+}
+
+"""
+Indica la naturaleza del evento, diferenciando entre encuentros planificados, espontáneos o accidentales.
+"""
+enum EventNature {
+    # Eventos planificados
+    """
+    El evento fue planeado con anticipación (ceremonias, batallas estratégicas, reuniones).
+    """
+    PLANNED
+
+    """
+    El evento ocurrió debido a una cita o reunión acordada entre personajes o facciones.
+    """
+    APPOINTMENT
+
+    """
+    El evento fue provocado intencionalmente por una de las partes (ataques, conspiraciones, emboscadas).
+    """
+    INTENTIONAL
+
+    # Eventos espontáneos
+    """
+    El evento ocurrió sin planificación previa, como encuentros fortuitos o descubrimientos inesperados.
+    """
+    SPONTANEOUS
+
+    """
+    El evento fue un accidente sin intención detrás (explosión accidental, tropiezo, equivocación).
+    """
+    ACCIDENTAL
+
+    """
+    El evento ocurrió por coincidencia, sin intervención intencional de los involucrados.
+    """
+    COINCIDENCE
+
+    # Eventos inevitables o forzados
+    """
+    El evento era inevitable por razones naturales, sobrenaturales o predestinadas (profecía cumplida, fin del mundo).
+    """
+    INEVITABLE
+
+    """
+    El evento ocurrió debido a fuerzas externas sin que los personajes tuvieran control sobre él (terremoto, tormenta, invasión repentina).
+    """
+    FORCED
+}

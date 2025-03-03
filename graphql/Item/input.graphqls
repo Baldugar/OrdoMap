@@ -1,0 +1,161 @@
+"""
+Estructura para crear un nuevo ítem dentro de un mundo.
+"""
+input CreateItemInput {
+    """
+    ID del mundo al que pertenece el ítem.
+    """
+    worldId: ID!
+
+    """
+    Nombre del ítem.
+    """
+    name: String!
+
+    """
+    Descripción del ítem, incluyendo su historia y propiedades únicas.
+    """
+    description: String!
+
+    """
+    Clasificación del ítem según su función o propósito.
+    """
+    type: ItemType!
+
+    """
+    Rareza del ítem dentro del mundo (común, poco común, raro, legendario).
+    """
+    rarity: ItemRarity!
+
+    """
+    Espacio donde se equipa el ítem en el cuerpo o inventario.
+    """
+    slot: ItemSlot!
+
+    """
+    Material principal del que está hecho el ítem.
+    """
+    material: String!
+
+    """
+    Estado del ítem (nuevo, desgastado, roto, encantado, etc.).
+    """
+    condition: ItemCondition!
+
+    """
+    Peso del ítem en kilogramos (kg).
+    """
+    weight: Float!
+
+    """
+    Dimensiones del ítem (alto, ancho, largo).
+    """
+    dimensions: String!
+
+    """
+    Fecha de creación o forja del ítem (opcional).
+    """
+    creationDate: String
+
+    """
+    Fecha de destrucción del ítem (opcional, si ya no existe).
+    """
+    destructionDate: String
+
+    # Propiedades especiales
+    """
+    Indica si el ítem tiene propiedades mágicas o sobrenaturales.
+    """
+    isMagical: Boolean!
+
+    """
+    Lista de habilidades o efectos que posee el ítem (si es mágico o especial).
+    """
+    abilities: [String!]!
+
+    """
+    Costo del ítem en la moneda estándar del mundo.
+    """
+    value: Float!
+}
+
+"""
+Estructura para actualizar un ítem existente.
+"""
+input UpdateItemInput {
+    """
+    ID del ítem a modificar.
+    """
+    id: ID!
+
+    """
+    Nuevo nombre del ítem (opcional).
+    """
+    name: String
+
+    """
+    Nueva descripción del ítem (opcional).
+    """
+    description: String
+
+    """
+    Modificar la clasificación del ítem (opcional).
+    """
+    type: ItemType
+
+    """
+    Modificar la rareza del ítem (opcional).
+    """
+    rarity: ItemRarity
+
+    """
+    Modificar el espacio donde se equipa el ítem (opcional).
+    """
+    slot: ItemSlot
+
+    """
+    Modificar el material del ítem (opcional).
+    """
+    material: String
+
+    """
+    Modificar el estado del ítem (opcional).
+    """
+    condition: ItemCondition
+
+    """
+    Modificar el peso del ítem (opcional).
+    """
+    weight: Float
+
+    """
+    Modificar las dimensiones del ítem (opcional).
+    """
+    dimensions: String
+
+    """
+    Modificar la fecha de creación del ítem (opcional).
+    """
+    creationDate: String
+
+    """
+    Modificar la fecha de destrucción del ítem (opcional).
+    """
+    destructionDate: String
+
+    # Propiedades especiales
+    """
+    Modificar si el ítem tiene propiedades mágicas (opcional).
+    """
+    isMagical: Boolean
+
+    """
+    Modificar las habilidades del ítem (opcional).
+    """
+    abilities: [String!]
+
+    """
+    Modificar el costo del ítem (opcional).
+    """
+    value: Float
+}

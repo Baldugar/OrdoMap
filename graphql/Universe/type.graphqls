@@ -1,0 +1,78 @@
+"""
+Representa un universo dentro del sistema de worldbuilding.
+Un universo agrupa múltiples mundos y sus respectivas entidades.
+"""
+type Universe implements Entity {
+    # Identificación y metadatos
+    """
+    Identificador único del universo.
+    """
+    id: ID! @goTag(key: "json", value: "_key")
+
+    """
+    Fecha de creación del universo en el sistema (ISO 8601).
+    """
+    createdAt: String!
+
+    """
+    Fecha de última actualización del universo en el sistema (ISO 8601).
+    """
+    updatedAt: String!
+
+    # Información general
+    """
+    Nombre del universo.
+    """
+    name: String!
+
+    """
+    Descripción del universo, incluyendo su historia general y concepto.
+    """
+    description: String!
+
+    """
+    Año de creación o punto de partida del universo en el sistema.
+    """
+    startYear: Int!
+
+    """
+    Indica si el universo está activo o archivado.
+    """
+    isActive: Boolean!
+
+    # Contenido del universo
+    """
+    Lista de mundos dentro de este universo.
+    """
+    worlds: [World!]!
+
+    """
+    Lista de facciones que operan en este universo.
+    """
+    factions: [Faction!]!
+
+    """
+    Lista de personajes que pertenecen a este universo.
+    """
+    characters: [Character!]!
+
+    """
+    Lista de criaturas que existen en este universo.
+    """
+    creatures: [Creature!]!
+
+    """
+    Lista de eventos importantes ocurridos en este universo.
+    """
+    events: [Event!]!
+
+    """
+    Lista de ubicaciones dentro de este universo.
+    """
+    locations: [Location!]!
+
+    """
+    Lista de ítems únicos o de importancia en el universo.
+    """
+    items: [Item!]!
+}

@@ -1,0 +1,274 @@
+"""
+Representa una facción dentro del mundo ficticio.
+Incluye datos generales, estructura organizativa, ideología y relaciones con otras entidades.
+"""
+type Faction implements Entity {
+    # Identificación y metadatos
+    """
+    Identificador único de la facción.
+    """
+    id: ID! @goTag(key: "json", value: "_key")
+
+    """
+    Fecha de creación de la facción en el sistema (ISO 8601).
+    """
+    createdAt: String!
+
+    """
+    Fecha de última actualización de la facción en el sistema (ISO 8601).
+    """
+    updatedAt: String!
+
+    # Información general
+    """
+    Nombre de la facción.
+    """
+    name: String!
+
+    """
+    Descripción de la facción, incluyendo su historia, cultura y propósito.
+    """
+    description: String!
+
+    """
+    Clasificación de la facción según su estructura y propósito.
+    """
+    type: FactionType!
+
+    """
+    Ideología, valores o principios que rigen a la facción.
+    """
+    ideology: String!
+
+    """
+    Estatus actual de la facción (activa, disuelta, exiliada, etc.).
+    """
+    status: FactionStatus!
+
+    """
+    Fecha de fundación de la facción en formato ISO 8601 (YYYY-MM-DD).
+    """
+    foundedDate: String!
+
+    """
+    Fecha de disolución de la facción (opcional, en caso de que ya no exista).
+    """
+    disbandedDate: String
+
+    """
+    Nivel de influencia de la facción en la historia o sociedad.
+    """
+    influence: FactionInfluence!
+
+    # Ubicación y dominio
+    """
+    Lista de ubicaciones donde la facción tiene presencia, dominio o influencia.
+    """
+    locations: [FactionLocation!]!
+
+    """
+    Lista de mundos donde la facción tiene presencia, influencia o ha sido exiliada.
+    """
+    worlds: [FactionWorld!]!
+
+    # Relaciones con otras entidades
+    """
+    Lista de personajes afiliados a la facción.
+    """
+    characters: [CharacterFaction!]!
+
+    """
+    Lista de criaturas asociadas a la facción (usadas en combate, veneradas, etc.).
+    """
+    creatures: [CreatureFaction!]!
+
+    """
+    Lista de facciones relacionadas (aliadas, enemigas, subordinadas, etc.).
+    """
+    factions: [FactionFaction!]!
+
+    """
+    Lista de eventos clave en los que la facción estuvo involucrada.
+    """
+    events: [FactionEvent!]!
+
+    """
+    Lista de ítems asociados a la facción (armamento, reliquias, símbolos).
+    """
+    items: [FactionItem!]!
+}
+
+"""
+Define la relación entre dos facciones.
+Puede incluir alianzas, enemistades, pactos y subordinación.
+"""
+type FactionFaction {
+    """
+    El id de la relación entre personajes.
+    """
+    id: ID! @goTag(key: "json", value: "_key")
+
+    """
+    La facción con la que se establece la relación.
+    """
+    faction: Faction!
+
+    """
+    Tipo de relación entre ambas facciones (aliadas, enemigas, vasallaje, etc.).
+    """
+    relation: FactionFactionRelation!
+
+    """
+    Fecha en que comenzó la relación (opcional).
+    """
+    startDate: String
+
+    """
+    Fecha en que terminó la relación (opcional).
+    """
+    endDate: String
+}
+
+"""
+Define la relación entre una facción y un evento.
+Puede representar participación en batallas, diplomacia o conflictos internos.
+"""
+type FactionEvent {
+    """
+    El id de la relación entre personajes.
+    """
+    id: ID! @goTag(key: "json", value: "_key")
+
+    """
+    La facción que tiene la relación con el evento.
+    """
+    faction: Faction!
+
+    """
+    El evento con el que la facción tiene una relación.
+    """
+    event: Event!
+
+    """
+    Tipo de relación entre la facción y el evento (participación, iniciador, oposición, etc.).
+    """
+    relation: FactionEventRelation!
+
+    """
+    Fecha en que comenzó la relación (opcional).
+    """
+    startDate: String
+
+    """
+    Fecha en que terminó la relación (opcional).
+    """
+    endDate: String
+}
+
+"""
+Define la relación entre una facción y un ítem.
+Puede representar reliquias, símbolos de poder, armamento y más.
+"""
+type FactionItem {
+    """
+    El id de la relación entre personajes.
+    """
+    id: ID! @goTag(key: "json", value: "_key")
+
+    """
+    La facción que tiene la relación con el ítem.
+    """
+    faction: Faction!
+
+    """
+    El ítem con el que la facción tiene una relación.
+    """
+    item: Item!
+
+    """
+    Tipo de relación entre la facción y el ítem (símbolo, reliquia, armamento, etc.).
+    """
+    relation: FactionItemRelation!
+
+    """
+    Fecha en que comenzó la relación (opcional).
+    """
+    startDate: String
+
+    """
+    Fecha en que terminó la relación (opcional).
+    """
+    endDate: String
+}
+
+"""
+Define la relación entre una facción y una ubicación.
+Puede representar control, influencia, exilio o presencia estratégica.
+"""
+type FactionLocation {
+    """
+    El id de la relación entre personajes.
+    """
+    id: ID! @goTag(key: "json", value: "_key")
+
+    """
+    La facción que tiene la relación con la ubicación.
+    """
+    faction: Faction!
+
+    """
+    La ubicación con la que la facción tiene una relación.
+    """
+    location: Location!
+
+    """
+    Tipo de relación entre la facción y la ubicación (control, influencia, exilio, etc.).
+    """
+    relation: FactionLocationRelation!
+
+    """
+    Fecha en que comenzó la relación (opcional).
+    """
+    startDate: String
+
+    """
+    Fecha en que terminó la relación (opcional).
+    """
+    endDate: String
+}
+
+"""
+Define la relación entre una facción y un mundo.
+Puede representar su origen, dominio, influencia interdimensional o exilio.
+"""
+type FactionWorld {
+    """
+    El id de la relación entre personajes.
+    """
+    id: ID! @goTag(key: "json", value: "_key")
+
+    """
+    La facción que tiene la relación con el mundo.
+    """
+    faction: Faction!
+
+    """
+    El mundo con el que la facción tiene una relación.
+    """
+    world: World!
+
+    """
+    Tipo de relación entre la facción y el mundo (nativa, exiliada, gobernante, etc.).
+    """
+    relation: FactionWorldRelation!
+
+    """
+    Fecha en que comenzó la relación (opcional).
+    """
+    startDate: String
+
+    """
+    Fecha en que terminó la relación (opcional).
+    """
+    endDate: String
+}

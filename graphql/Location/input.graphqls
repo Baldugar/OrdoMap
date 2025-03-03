@@ -1,0 +1,109 @@
+"""
+Estructura para crear una nueva ubicación dentro de un mundo.
+"""
+input CreateLocationInput {
+    """
+    ID del mundo al que pertenece la ubicación.
+    """
+    worldId: ID!
+
+    """
+    Nombre de la ubicación.
+    """
+    name: String!
+
+    """
+    Descripción detallada de la ubicación, incluyendo su historia y características.
+    """
+    description: String!
+
+    """
+    Clasificación de la ubicación según su tipo (ciudad, bosque, mazmorra, etc.).
+    """
+    type: LocationType!
+
+    """
+    Región o territorio al que pertenece la ubicación.
+    """
+    region: String!
+
+    """
+    Coordenadas geográficas aproximadas (latitud, longitud).
+    """
+    coordinates: String!
+
+    """
+    Nivel de accesibilidad de la ubicación (pública, restringida, oculta, etc.).
+    """
+    accessibility: LocationAccessibility!
+
+    """
+    Indica si la ubicación es natural o artificial.
+    """
+    isNatural: Boolean!
+
+    """
+    Clima predominante en la ubicación.
+    """
+    climate: String!
+
+    """
+    Ecosistema de la ubicación (bosque, desierto, pantano, etc.).
+    """
+    ecosystem: String!
+}
+
+"""
+Estructura para actualizar una ubicación existente.
+"""
+input UpdateLocationInput {
+    """
+    ID de la ubicación a modificar.
+    """
+    id: ID!
+
+    """
+    Nuevo nombre de la ubicación (opcional).
+    """
+    name: String
+
+    """
+    Nueva descripción de la ubicación (opcional).
+    """
+    description: String
+
+    """
+    Modificar la clasificación de la ubicación (opcional).
+    """
+    type: LocationType
+
+    """
+    Modificar la región o territorio de la ubicación (opcional).
+    """
+    region: String
+
+    """
+    Modificar las coordenadas de la ubicación (opcional).
+    """
+    coordinates: String
+
+    """
+    Modificar el nivel de accesibilidad de la ubicación (opcional).
+    """
+    accessibility: LocationAccessibility
+
+    """
+    Modificar si la ubicación es natural o artificial (opcional).
+    """
+    isNatural: Boolean
+
+    """
+    Modificar el clima de la ubicación (opcional).
+    """
+    climate: String
+
+    """
+    Modificar el ecosistema de la ubicación (opcional).
+    """
+    ecosystem: String
+}

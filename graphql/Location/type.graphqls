@@ -1,0 +1,206 @@
+"""
+Representa una ubicación dentro del mundo ficticio.
+Incluye datos generales, características geográficas y relaciones con otras entidades.
+"""
+type Location implements Entity {
+    # Identificación y metadatos
+    """
+    Identificador único de la ubicación.
+    """
+    id: ID! @goTag(key: "json", value: "_key")
+
+    """
+    Fecha de creación de la ubicación en el sistema (ISO 8601).
+    """
+    createdAt: String!
+
+    """
+    Fecha de última actualización de la ubicación en el sistema (ISO 8601).
+    """
+    updatedAt: String!
+
+    # Información general
+    """
+    Nombre de la ubicación.
+    """
+    name: String!
+
+    """
+    Descripción detallada de la ubicación, incluyendo su historia y características.
+    """
+    description: String!
+
+    """
+    Clasificación de la ubicación según su tipo (ciudad, bosque, mazmorra, etc.).
+    """
+    type: LocationType!
+
+    """
+    Región o territorio al que pertenece la ubicación.
+    """
+    region: String!
+
+    """
+    Coordenadas geográficas aproximadas (latitud, longitud).
+    """
+    coordinates: String!
+
+    """
+    Nivel de accesibilidad de la ubicación (pública, restringida, oculta, etc.).
+    """
+    accessibility: LocationAccessibility!
+
+    """
+    Indica si la ubicación es natural o artificial.
+    """
+    isNatural: Boolean!
+
+    """
+    Clima predominante en la ubicación.
+    """
+    climate: String!
+
+    """
+    Ecosistema de la ubicación (bosque, desierto, pantano, etc.).
+    """
+    ecosystem: String!
+
+    # Relaciones con otras entidades
+    """
+    Lista de personajes que residen o han estado en la ubicación.
+    """
+    characters: [CharacterLocation!]!
+
+    """
+    Lista de criaturas que habitan o han pasado por la ubicación.
+    """
+    creatures: [CreatureLocation!]!
+
+    """
+    Lista de facciones que controlan o han operado en la ubicación.
+    """
+    factions: [FactionLocation!]!
+
+    """
+    Lista de eventos históricos que han ocurrido en la ubicación.
+    """
+    events: [LocationEvent!]!
+
+    """
+    Lista de ítems que han sido encontrados o almacenados en la ubicación.
+    """
+    items: [ItemLocation!]!
+
+    """
+    Lista de otras ubicaciones relacionadas (ciudades dentro de un país, conexiones mágicas, etc.).
+    """
+    relatedLocations: [LocationLocation!]!
+
+    """
+    Lista de mundos en los que existe o influye esta ubicación.
+    """
+    worlds: [LocationWorld!]!
+}
+
+"""
+Define la relación entre dos ubicaciones.
+Puede representar conexiones geográficas, políticas o mágicas.
+"""
+type LocationLocation {
+    """
+    El id de la relación entre personajes.
+    """
+    id: ID! @goTag(key: "json", value: "_key")
+
+    """
+    La otra ubicación con la que se establece la relación.
+    """
+    location: Location!
+
+    """
+    Tipo de relación entre ambas ubicaciones (contenida dentro, conectada, capital, etc.).
+    """
+    relation: LocationLocationRelation!
+
+    """
+    Fecha en que comenzó la relación (opcional).
+    """
+    startDate: String
+
+    """
+    Fecha en que terminó la relación (opcional).
+    """
+    endDate: String
+}
+
+"""
+Define la relación entre una ubicación y un evento.
+Puede representar batallas, desastres, fundaciones y más.
+"""
+type LocationEvent {
+    """
+    El id de la relación entre personajes.
+    """
+    id: ID! @goTag(key: "json", value: "_key")
+
+    """
+    La ubicación con la que el evento tiene una relación.
+    """
+    location: Location!
+
+    """
+    El evento con el que la ubicación tiene una relación.
+    """
+    event: Event!
+
+    """
+    Tipo de relación entre la ubicación y el evento (batalla, destrucción, fundación, etc.).
+    """
+    relation: LocationEventRelation!
+
+    """
+    Fecha en que comenzó la relación (opcional).
+    """
+    startDate: String
+
+    """
+    Fecha en que terminó la relación (opcional).
+    """
+    endDate: String
+}
+
+"""
+Define la relación entre una ubicación y un mundo.
+Puede representar su existencia, conexiones interdimensionales o anomalías.
+"""
+type LocationWorld {
+    """
+    El id de la relación entre personajes.
+    """
+    id: ID! @goTag(key: "json", value: "_key")
+
+    """
+    La ubicación con la que el mundo tiene una relación.
+    """
+    location: Location!
+
+    """
+    El mundo con el que la ubicación tiene una relación.
+    """
+    world: World!
+
+    """
+    Tipo de relación entre la ubicación y el mundo (nativa, artificial, conectada, etc.).
+    """
+    relation: LocationWorldRelation!
+
+    """
+    Fecha en que comenzó la relación (opcional).
+    """
+    startDate: String
+
+    """
+    Fecha en que terminó la relación (opcional).
+    """
+    endDate: String
+}

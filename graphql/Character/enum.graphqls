@@ -1,0 +1,615 @@
+"""
+Representa el nivel de relación entre dos personajes.
+Incluye relaciones de amistad, rivalidad, mentoría, familia y jerarquía profesional.
+"""
+enum CharacterRelationLevel {
+    # Relaciones de enemistad y rivalidad
+    """
+    Relación de enemistad extrema o de larga duración. Oponentes acérrimos con un conflicto prolongado.
+    """
+    ARCHENEMY
+
+    """
+    Oposición activa con conflictos frecuentes y hostilidad evidente.
+    """
+    ENEMY
+
+    """
+    Competencia recurrente sin llegar al odio extremo. Puede incluir rivalidad deportiva, profesional o personal.
+    """
+    RIVAL
+
+    # Relaciones neutrales y superficiales
+    """
+    Relación sin una inclinación fuerte. Desconocidos o con interacciones superficiales sin impacto significativo.
+    """
+    NEUTRAL
+
+    """
+    Conocidos casuales, sin una conexión profunda. Se han cruzado en el pasado pero no tienen una relación establecida.
+    """
+    ACQUAINTANCE
+
+    # Relaciones de amistad
+    """
+    Amistad cercana o alianza de confianza. Relación basada en apoyo mutuo y cooperación.
+    """
+    FRIEND
+
+    """
+    Amistad extremadamente fuerte, cercana al concepto de familia. Puede incluir lazos de hermandad sin ser de sangre.
+    """
+    BEST_FRIEND
+
+    # Relaciones de mentoría y aprendizaje
+    """
+    Relación maestro-alumno o de enseñanza. Un personaje guía al otro en su desarrollo personal o profesional.
+    """
+    MENTOR
+
+    """
+    Recíproco del mentor: el protegido o aprendiz que recibe conocimiento, entrenamiento o apoyo de un mentor.
+    """
+    PROTEGE
+
+    # Relaciones románticas y familiares
+    """
+    Relación amorosa en cualquier etapa inicial. Puede ser un interés romántico, enamoramiento o relación incipiente.
+    """
+    ROMANTIC
+
+    """
+    Relación romántica establecida. Puede incluir parejas casadas, comprometidas o con un vínculo consolidado.
+    """
+    PARTNER
+
+    """
+    Relación de parentesco, ya sea por sangre o adopción. Incluye lazos familiares directos o extendidos.
+    """
+    FAMILY
+
+    """
+    Amor no correspondido. Un personaje siente afecto por otro, pero este no le responde de la misma manera.
+    """
+    UNREQUITED
+
+    """
+    Amistad rota por eventos pasados. Dos personajes que fueron amigos pero cuya relación se ha deteriorado o ha terminado.
+    """
+    FORMER_FRIEND
+
+    """
+    Relación amorosa que terminó, pero cuyo impacto sigue presente en la historia o en la dinámica entre personajes.
+    """
+    FORMER_LOVER
+
+    # Relaciones de jerarquía y organización
+    """
+    Asociación basada en un interés común, sin necesidad de amistad. Puede incluir alianzas temporales o estratégicas.
+    """
+    ALLY
+
+    """
+    Miembros de la misma organización, grupo o facción. Comparten una afiliación en un contexto militar, político, religioso o social.
+    """
+    FACTION_MEMBER
+
+    """
+    Relación de autoridad en la que un personaje tiene poder sobre otro. Puede representar jefe-subordinado o líder-miembro.
+    """
+    SUPERIOR
+
+    """
+    Relación inversa de autoridad: el personaje es subordinado o está bajo las órdenes de otro.
+    """
+    SUBORDINATE
+}
+
+"""
+Representa relaciones familiares entre personajes, incluyendo parentescos directos e indirectos.
+Distingue entre lazos de sangre, adopción y vínculos familiares extendidos.
+"""
+enum FamilyRelation {
+    # Relación familiar directa
+
+    """
+    Padre o madre biológico/a del personaje.
+    """
+    PARENT
+
+    """
+    Hijo o hija biológico/a del personaje.
+    """
+    CHILD
+
+    """
+    Hermano o hermana del personaje, comparten al menos uno de los padres.
+    """
+    SIBLING
+
+    """
+    Abuelo o abuela del personaje, ascendencia dos generaciones atrás.
+    """
+    GRANDPARENT
+
+    """
+    Nieto o nieta del personaje, descendencia dos generaciones adelante.
+    """
+    GRANDCHILD
+
+    # Familia extendida
+
+    """
+    Tío o tía del personaje, hermano/a del padre o la madre.
+    """
+    UNCLE_AUNT
+
+    """
+    Sobrino o sobrina del personaje, hijo/a de un hermano o hermana.
+    """
+    NEPHEW_NIECE
+
+    """
+    Primo o prima del personaje, hijo/a de los tíos o tías.
+    """
+    COUSIN
+
+    # Relaciones conyugales
+
+    """
+    Esposo o esposa del personaje, relación legalmente reconocida o establecida románticamente.
+    """
+    SPOUSE
+
+    """
+    Exesposo/a del personaje. Relación con lazos matrimoniales que han sido disueltos.
+    """
+    EX_SPOUSE
+
+    # Relaciones familiares no biológicas
+
+    """
+    Padrastro o madrastra del personaje. Relación por matrimonio con uno de los padres del personaje.
+    """
+    STEP_PARENT
+
+    """
+    Hijastro o hijastra del personaje. Hijo/a de su pareja en una relación previa.
+    """
+    STEP_CHILD
+
+    """
+    Medio hermano/a del personaje. Comparten solo uno de los padres.
+    """
+    HALF_SIBLING
+
+    """
+    Padre o madre adoptivo/a del personaje. Relación establecida legalmente sin lazo de sangre.
+    """
+    ADOPTIVE_PARENT
+
+    """
+    Hijo o hija adoptivo/a del personaje. Relación establecida legalmente sin lazo de sangre.
+    """
+    ADOPTIVE_CHILD
+
+    # Relaciones de tutela
+
+    """
+    Tutor legal del personaje. Puede ser una figura parental, un mentor o protector.
+    """
+    GUARDIAN
+
+    """
+    Menor bajo tutela legal de otro personaje. No es necesariamente hijo adoptivo.
+    """
+    WARD
+}
+
+"""
+Define el tipo de relación que un personaje puede tener con una criatura.
+Estos valores se usan para modelar interacciones en el mundo ficticio.
+"""
+enum CharacterCreatureRelation {
+    # Relaciones de propiedad y domesticación
+
+    """
+    El personaje es dueño de la criatura (mascota, montura, familiar).
+    """
+    OWNER
+
+    """
+    El personaje está intentando domesticar la criatura, pero aún no tiene éxito.
+    """
+    TAME_ATTEMPT
+
+    """
+    La criatura ha sido domesticada con éxito y obedece al personaje.
+    """
+    TAMED
+
+    """
+    La criatura protege o vigila al personaje (lobo guardián, gólem, etc.).
+    """
+    GUARDIAN
+
+    # Relaciones de combate y caza
+
+    """
+    La criatura y el personaje son compañeros, pero sin una relación de propiedad.
+    """
+    COMPANION
+
+    """
+    El personaje y la criatura cazan juntos como aliados.
+    """
+    HUNTING_PARTNER
+
+    """
+    El personaje caza activamente a la criatura.
+    """
+    HUNTED
+
+    """
+    La criatura es hostil hacia el personaje y lo ataca al verlo.
+    """
+    ENEMY
+
+    # Relaciones mágicas y sobrenaturales
+
+    """
+    El personaje venera a la criatura como una entidad divina.
+    """
+    WORSHIPS
+
+    """
+    La criatura es una manifestación de un dios o entidad superior.
+    """
+    DEITY_AVATAR
+
+    """
+    El personaje invocó a la criatura con un ritual (demonios, elementales, etc.).
+    """
+    SUMMONED
+
+    """
+    La criatura y el personaje están fusionados por un vínculo sobrenatural.
+    """
+    FUSED
+
+    """
+    La criatura fue creada a partir de una maldición lanzada por el personaje.
+    """
+    CURSED
+
+    # Relaciones de utilidad y transporte
+
+    """
+    El personaje monta a la criatura como un medio de transporte (caballo, dragón).
+    """
+    RIDES
+
+    """
+    La criatura es un experimento creado por el personaje (quimera, mutación).
+    """
+    EXPERIMENT
+}
+
+"""
+Define la relación que un personaje puede tener con un evento en el mundo ficticio.
+Incluye participación directa, testimonio, organización, influencia y otras interacciones posibles.
+"""
+enum CharacterEventRelation {
+    # Roles activos en el evento
+
+    """
+    El personaje fue el principal responsable del evento. Puede ser el iniciador, el líder o el causante del suceso.
+    """
+    INITIATOR
+
+    """
+    El personaje participó activamente en el evento como protagonista o actor clave.
+    """
+    PARTICIPANT
+
+    """
+    El personaje organizó el evento, pero no participó directamente en su desarrollo.
+    """
+    ORGANIZER
+
+    # Roles pasivos o circunstanciales
+
+    """
+    El personaje fue testigo del evento sin intervenir activamente.
+    """
+    WITNESS
+
+    """
+    El personaje fue afectado por el evento, ya sea de manera positiva o negativa, pero sin participación directa.
+    """
+    AFFECTED
+
+    """
+    El personaje influyó en el evento de alguna manera indirecta, sin estar presente.
+    """
+    INFLUENCER
+
+    # Respuestas al evento
+
+    """
+    El personaje intentó detener el evento o evitar que sucediera.
+    """
+    OPPOSER
+
+    """
+    El personaje investigó o estudió el evento después de que ocurriera, sin haber estado presente en el momento.
+    """
+    INVESTIGATOR
+
+    """
+    El personaje se enteró del evento y lo difundió a otras personas.
+    """
+    REPORTER
+
+    # Otras interacciones
+
+    """
+    El personaje utilizó el evento como una oportunidad para su propio beneficio (económico, político, militar, etc.).
+    """
+    OPPORTUNIST
+
+    """
+    El personaje sufrió una pérdida o fue una víctima directa del evento.
+    """
+    VICTIM
+
+    """
+    El personaje fue rescatado durante el evento o dependió de la ayuda de otros para sobrevivir.
+    """
+    RESCUED
+
+    """
+    El personaje rescató a otras personas o ayudó a mitigar los efectos del evento.
+    """
+    SAVIOR
+
+    """
+    El personaje creó una obra basada en el evento (arte, literatura, música, etc.).
+    """
+    CHRONICLER
+}
+
+"""
+Define la relación entre un personaje y una facción.
+Incluye afiliaciones, liderazgos, enemistades e interacciones indirectas.
+"""
+enum CharacterFactionRelation {
+    # Afiliaciones oficiales
+
+    """
+    El personaje es el líder absoluto de la facción (rey, emperador, comandante supremo).
+    """
+    LEADER
+
+    """
+    El personaje es un miembro activo de la facción.
+    """
+    MEMBER
+
+    """
+    El personaje es un ex-miembro que dejó la facción de manera voluntaria o fue expulsado.
+    """
+    FORMER_MEMBER
+
+    # Relaciones externas
+
+    """
+    El personaje es un aliado de la facción sin ser miembro oficial.
+    """
+    ALLY
+
+    """
+    El personaje es un enemigo de la facción y se opone a sus intereses.
+    """
+    ENEMY
+
+    """
+    El personaje financia o apoya a la facción sin ser miembro activo.
+    """
+    SPONSOR
+
+    """
+    El personaje trabaja para la facción bajo contrato, sin lealtad directa.
+    """
+    MERCENARY
+
+    # Interacciones estratégicas
+
+    """
+    El personaje ha sido capturado por la facción y está prisionero.
+    """
+    PRISONER
+
+    """
+    El personaje es un informante o espía dentro de la facción.
+    """
+    INFORMANT
+
+    """
+    El personaje está siendo manipulado por la facción sin su conocimiento.
+    """
+    PUPPET
+}
+
+"""
+Define la relación entre un personaje y un ítem.
+Puede representar posesión, uso, creación, destrucción o influencia del objeto en el personaje.
+"""
+enum CharacterItemRelation {
+    # Relaciones de propiedad y uso
+    """
+    El personaje es el dueño actual del ítem.
+    """
+    OWNER
+
+    """
+    El personaje fue dueño del ítem, pero lo perdió o se deshizo de él.
+    """
+    FORMER_OWNER
+
+    """
+    El personaje usa activamente el ítem, aunque no sea el dueño.
+    """
+    USER
+
+    # Relaciones de creación y destrucción
+    """
+    El personaje creó el ítem (forja, magia, ingeniería, etc.).
+    """
+    CREATOR
+
+    """
+    El personaje destruyó el ítem o fue responsable de su pérdida.
+    """
+    DESTROYER
+
+    # Interacciones estratégicas
+    """
+    El personaje busca obtener el ítem por algún motivo.
+    """
+    SEEKER
+
+    """
+    El personaje protege el ítem y evita que caiga en malas manos.
+    """
+    GUARDIAN
+
+    """
+    El personaje está maldito o influenciado negativamente por el ítem.
+    """
+    CURSED
+
+    """
+    El personaje vendió, intercambió o regaló el ítem.
+    """
+    MERCHANT
+
+    """
+    El personaje investigó el ítem para conocer su origen y propiedades.
+    """
+    SCHOLAR
+}
+
+"""
+Define la relación entre un personaje y una ubicación.
+Puede representar origen, residencia, gobierno, exploración o conflicto con el lugar.
+"""
+enum CharacterLocationRelation {
+    # Residencia y origen
+    """
+    El personaje nació en esta ubicación.
+    """
+    BIRTHPLACE
+
+    """
+    El personaje vive en esta ubicación de manera permanente.
+    """
+    RESIDENT
+
+    # Control y gobierno
+    """
+    El personaje gobierna la ubicación o tiene autoridad sobre ella.
+    """
+    RULER
+
+    # Exploración y viajes
+    """
+    El personaje pasó por la ubicación temporalmente.
+    """
+    VISITOR
+
+    """
+    El personaje exploró la ubicación en busca de conocimiento o recursos.
+    """
+    EXPLORER
+
+    # Conflictos y castigos
+    """
+    El personaje fue exiliado de la ubicación y no puede regresar.
+    """
+    EXILED
+
+    """
+    El personaje está en la ubicación en contra de su voluntad (prisión, secuestro).
+    """
+    CAPTIVE
+
+    """
+    El personaje participó en una batalla que ocurrió en la ubicación.
+    """
+    BATTLEFIELD_PARTICIPANT
+
+    """
+    El personaje destruyó parte o toda la ubicación.
+    """
+    DESTROYER
+}
+
+"""
+Define la relación entre un personaje y un mundo.
+Puede representar ciudadanía, exploración, influencia o enemistad con el mundo.
+"""
+enum CharacterWorldRelation {
+    # Pertenencia y origen
+    """
+    El personaje nació en este mundo.
+    """
+    NATIVE
+
+    """
+    El personaje es un residente actual del mundo, pero no necesariamente nativo.
+    """
+    RESIDENT
+
+    """
+    El personaje es un extranjero que llegó desde otro mundo.
+    """
+    OUTSIDER
+
+    # Influencia sobre el mundo
+    """
+    El personaje tiene una influencia significativa en la política, cultura o historia del mundo.
+    """
+    INFLUENCER
+
+    """
+    El personaje busca activamente proteger el mundo o mantener su equilibrio.
+    """
+    GUARDIAN
+
+    """
+    El personaje es un conquistador que busca dominar el mundo.
+    """
+    CONQUEROR
+
+    """
+    El personaje es un destructor que quiere traer caos o aniquilación al mundo.
+    """
+    DESTROYER
+
+    # Exploración y descubrimiento
+    """
+    El personaje explora el mundo en busca de conocimiento o aventuras.
+    """
+    EXPLORER
+
+    """
+    El personaje fue exiliado del mundo y no puede regresar.
+    """
+    EXILED
+
+    """
+    El personaje fue convocado a este mundo por medios sobrenaturales (magia, rituales, etc.).
+    """
+    SUMMONED
+}

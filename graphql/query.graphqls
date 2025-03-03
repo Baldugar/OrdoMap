@@ -1,0 +1,92 @@
+"""
+Consultas relacionadas con los universos dentro del sistema.
+"""
+type Query {
+    # Obtención de Personajes
+    """
+    Devuelve un personaje específico por su ID.
+    """
+    character(id: ID!): Character
+
+    """
+    Devuelve una lista de personajes dentro de un mundo, con paginación opcional.
+    """
+    characters(worldId: ID!, limit: Int = 10, offset: Int = 0): [Character!]!
+
+    # Obtención de Criaturas
+    """
+    Devuelve una criatura específica por su ID.
+    """
+    creature(id: ID!): Creature
+
+    """
+    Devuelve una lista de criaturas dentro de un mundo, con paginación opcional.
+    """
+    creatures(worldId: ID!, limit: Int = 10, offset: Int = 0): [Creature!]!
+
+    # Obtención de Ítems
+    """
+    Devuelve un ítem específico por su ID.
+    """
+    item(id: ID!): Item
+
+    """
+    Devuelve una lista de ítems dentro de un mundo, con paginación opcional.
+    """
+    items(worldId: ID!, limit: Int = 10, offset: Int = 0): [Item!]!
+
+    # Obtención de Ubicaciones
+    """
+    Devuelve una ubicación específica por su ID.
+    """
+    location(id: ID!): Location
+
+    """
+    Devuelve una lista de ubicaciones dentro de un mundo, con paginación opcional.
+    """
+    locations(worldId: ID!, limit: Int = 10, offset: Int = 0): [Location!]!
+
+    # Obtención de Facciones
+    """
+    Devuelve una facción específica por su ID.
+    """
+    faction(id: ID!): Faction
+
+    """
+    Devuelve una lista de facciones dentro de un mundo, con paginación opcional.
+    """
+    factions(worldId: ID!, limit: Int = 10, offset: Int = 0): [Faction!]!
+
+    # Obtención de Eventos
+    """
+    Devuelve un evento específico por su ID.
+    """
+    event(id: ID!): Event
+
+    """
+    Devuelve una lista de eventos dentro de un mundo, con paginación opcional.
+    """
+    events(worldId: ID!, limit: Int = 10, offset: Int = 0): [Event!]!
+
+    # Obtención de Mundos
+    """
+    Devuelve un mundo específico por su ID.
+    """
+    world(id: ID!): World
+
+    """
+    Devuelve una lista de mundos, con paginación opcional.
+    """
+    worlds(universeId: ID!, limit: Int = 10, offset: Int = 0): [World!]!
+
+    # Obtención de Universos
+    """
+    Devuelve un universo específico por su ID.
+    """
+    universe(id: ID!): Universe
+
+    """
+    Devuelve una lista de universos, con paginación opcional.
+    """
+    universes(limit: Int = 10, offset: Int = 0): [Universe!]!
+}

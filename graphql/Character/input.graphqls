@@ -1,0 +1,111 @@
+"""
+Estructura para crear un nuevo personaje dentro de un mundo.
+"""
+input CreateCharacterInput {
+    """
+    ID del mundo al que pertenece el personaje.
+    """
+    worldId: ID!
+
+    """
+    Nombre del personaje.
+    """
+    name: String!
+
+    """
+    Descripción del personaje, incluyendo trasfondo o detalles relevantes.
+    """
+    description: String!
+
+    """
+    Tipo de entidad, útil para clasificar personajes en el sistema.
+    """
+    type: String!
+
+    # Atributos físicos y estado
+    """
+    Fecha de nacimiento del personaje en formato ISO 8601 (YYYY-MM-DD).
+    """
+    birthDate: String!
+
+    """
+    Altura del personaje en metros (m).
+    """
+    height: Float!
+
+    """
+    Peso del personaje en kilogramos (kg).
+    """
+    weight: Float!
+
+    """
+    Indica si el personaje está vivo (true) o muerto (false).
+    """
+    isAlive: Boolean!
+
+    """
+    Indica si el personaje es un protagonista o figura central en la historia.
+    """
+    isMain: Boolean!
+
+    """
+    Alineamiento moral o ético del personaje (según el sistema usado).
+    """
+    alignment: Alignment
+}
+
+"""
+Estructura para actualizar un personaje existente.
+"""
+input UpdateCharacterInput {
+    """
+    ID del personaje a modificar.
+    """
+    id: ID!
+
+    """
+    Nuevo nombre del personaje (opcional).
+    """
+    name: String
+
+    """
+    Nueva descripción del personaje (opcional).
+    """
+    description: String
+
+    """
+    Modificar el tipo del personaje (opcional).
+    """
+    type: String
+
+    # Atributos físicos y estado
+    """
+    Modificar la fecha de nacimiento del personaje (opcional).
+    """
+    birthDate: String
+
+    """
+    Modificar la altura del personaje (opcional).
+    """
+    height: Float
+
+    """
+    Modificar el peso del personaje (opcional).
+    """
+    weight: Float
+
+    """
+    Modificar si el personaje está vivo o muerto (opcional).
+    """
+    isAlive: Boolean
+
+    """
+    Modificar si el personaje es un protagonista o no (opcional).
+    """
+    isMain: Boolean
+
+    """
+    Modificar el alineamiento del personaje (opcional).
+    """
+    alignment: Alignment
+}

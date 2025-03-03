@@ -1,0 +1,49 @@
+"""
+Estructura para crear un nuevo universo.
+"""
+input CreateUniverseInput {
+    """
+    Nombre del universo.
+    """
+    name: String!
+
+    """
+    Descripción del universo, incluyendo historia y detalles generales.
+    """
+    description: String!
+
+    """
+    Año de creación o punto de referencia inicial del universo.
+    """
+    startYear: Int
+}
+
+"""
+Estructura para actualizar un universo existente.
+"""
+input UpdateUniverseInput {
+    """
+    ID del universo a modificar.
+    """
+    id: ID!
+
+    """
+    Nuevo nombre del universo (opcional).
+    """
+    name: String
+
+    """
+    Nueva descripción del universo (opcional).
+    """
+    description: String
+
+    """
+    Modificar el año de inicio del universo (opcional).
+    """
+    startYear: Int
+
+    """
+    Indicar si el universo sigue en expansión o ha finalizado (opcional).
+    """
+    isActive: Boolean
+}

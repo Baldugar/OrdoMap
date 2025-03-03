@@ -1,0 +1,189 @@
+"""
+Representa un mundo dentro de un universo ficticio.
+Incluye datos generales, características físicas y conexiones interdimensionales.
+"""
+type World implements Entity {
+    # Identificación y metadatos
+    """
+    Identificador único del mundo.
+    """
+    id: ID! @goTag(key: "json", value: "_key")
+
+    """
+    Fecha de creación del mundo en el sistema (ISO 8601).
+    """
+    createdAt: String!
+
+    """
+    Fecha de última actualización del mundo en el sistema (ISO 8601).
+    """
+    updatedAt: String!
+
+    # Información general
+    """
+    Nombre del mundo.
+    """
+    name: String!
+
+    """
+    Descripción detallada del mundo, incluyendo su historia y características únicas.
+    """
+    description: String!
+
+    """
+    Clasificación del mundo según su naturaleza y origen.
+    """
+    type: WorldType!
+
+    """
+    El universo al que pertenece este mundo.
+    """
+    universe: Universe!
+
+    """
+    Nivel tecnológico predominante en el mundo (medieval, avanzado, mágico, etc.).
+    """
+    technologyLevel: String!
+
+    """
+    Principales fuentes de energía utilizadas en el mundo.
+    """
+    energySources: [String!]!
+
+    """
+    Gravedad relativa del mundo en comparación con la Tierra (1.0 = gravedad terrestre).
+    """
+    gravity: Float!
+
+    """
+    Tamaño del mundo en relación a la Tierra (1.0 = tamaño terrestre).
+    """
+    size: Float!
+
+    """
+    Número de lunas o satélites naturales del mundo.
+    """
+    moons: Int!
+
+    """
+    Número de soles o estrellas alrededor de las cuales orbita el mundo.
+    """
+    stars: Int!
+
+    """
+    Clima predominante del mundo.
+    """
+    climate: String!
+
+    """
+    Ecosistema y bioma dominante del mundo.
+    """
+    ecosystem: String!
+
+    """
+    Indica si el mundo tiene atmósfera y si es respirable por humanos.
+    """
+    hasAtmosphere: Boolean!
+
+    """
+    Indica si el mundo está habitado por seres vivos.
+    """
+    isHabitable: Boolean!
+
+    # Relaciones con otras entidades
+    """
+    Lista de personajes asociados a este mundo.
+    """
+    characters: [CharacterWorld!]!
+
+    """
+    Lista de criaturas que existen o han existido en este mundo.
+    """
+    creatures: [CreatureWorld!]!
+
+    """
+    Lista de facciones con presencia o influencia en este mundo.
+    """
+    factions: [FactionWorld!]!
+
+    """
+    Lista de eventos importantes que han ocurrido en este mundo.
+    """
+    events: [WorldEvent!]!
+
+    """
+    Lista de ubicaciones dentro del mundo.
+    """
+    locations: [LocationWorld!]!
+
+    """
+    Lista de mundos conectados a este a través de portales o interacciones interdimensionales.
+    """
+    connectedWorlds: [WorldWorld!]!
+}
+
+"""
+Define la relación entre un mundo y un evento.
+Puede representar desastres, descubrimientos, guerras y más.
+"""
+type WorldEvent {
+    """
+    El id de la relación entre personajes.
+    """
+    id: ID! @goTag(key: "json", value: "_key")
+
+    """
+    El mundo en el que ocurrió el evento.
+    """
+    world: World!
+    """
+    El evento con el que el mundo tiene una relación.
+    """
+    event: Event!
+
+    """
+    Tipo de relación entre el mundo y el evento (destrucción, descubrimiento, alteración, etc.).
+    """
+    relation: WorldEventRelation!
+
+    """
+    Fecha en que comenzó la relación (opcional).
+    """
+    startDate: String
+
+    """
+    Fecha en que terminó la relación (opcional).
+    """
+    endDate: String
+}
+
+"""
+Define la relación entre dos mundos.
+Puede representar conexiones interdimensionales, origen compartido y más.
+"""
+type WorldWorld {
+    """
+    El id de la relación entre personajes.
+    """
+    id: ID! @goTag(key: "json", value: "_key")
+
+    """
+    El otro mundo con el que se establece la relación.
+    """
+    world: World!
+
+    """
+    Tipo de relación entre ambos mundos (conectados, creados uno a partir del otro, etc.).
+    """
+    relation: WorldWorldRelation!
+
+    """
+    Fecha en que comenzó la relación (opcional).
+    """
+    startDate: String
+
+    """
+    Fecha en que terminó la relación (opcional).
+    """
+    endDate: String
+}

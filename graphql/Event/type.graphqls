@@ -1,0 +1,100 @@
+"""
+Representa un evento dentro del mundo ficticio.
+Incluye datos generales, ubicación, impacto y relaciones con otras entidades.
+"""
+type Event implements Entity {
+    # Identificación y metadatos
+    """
+    Identificador único del evento.
+    """
+    id: ID! @goTag(key: "json", value: "_key")
+
+    """
+    Fecha de creación del evento en el sistema (ISO 8601).
+    """
+    createdAt: String!
+
+    """
+    Fecha de última actualización del evento en el sistema (ISO 8601).
+    """
+    updatedAt: String!
+
+    # Información general
+    """
+    Nombre del evento.
+    """
+    name: String!
+
+    """
+    Descripción detallada del evento, incluyendo su impacto y contexto.
+    """
+    description: String!
+
+    """
+    Clasificación del evento según su naturaleza (batalla, descubrimiento, ritual, etc.).
+    """
+    type: EventType!
+
+    """
+    Indica la naturaleza del evento (planificado, accidental, fortuito, inevitable, etc.).
+    """
+    nature: EventNature!
+
+    # Duración y recurrencia
+    """
+    Fecha de inicio del evento en formato ISO 8601 (YYYY-MM-DD).
+    """
+    startDate: String!
+
+    """
+    Fecha de finalización del evento en formato ISO 8601 (YYYY-MM-DD).
+    """
+    endDate: String!
+
+    """
+    Indica si el evento es recurrente (true) o único (false).
+    """
+    isRecurring: Boolean!
+
+    """
+    Importancia del evento dentro de la historia (baja, media, alta).
+    """
+    significance: EventSignificance!
+
+    # Ubicación y contexto
+    """
+    Lista de ubicaciones donde ocurrió el evento.
+    """
+    locations: [LocationEvent!]!
+
+    """
+    Mundos en los que el evento tuvo un impacto.
+    """
+    worlds: [WorldEvent!]!
+
+    # Relaciones con otras entidades
+    """
+    Lista de personajes involucrados en el evento.
+    """
+    characters: [CharacterEvent!]!
+
+    """
+    Lista de criaturas que participaron en el evento.
+    """
+    creatures: [CreatureEvent!]!
+
+    """
+    Lista de facciones relacionadas con el evento.
+    """
+    factions: [FactionEvent!]!
+
+    """
+    Lista de ítems asociados al evento (artefactos, armas, reliquias, etc.).
+    """
+    items: [ItemEvent!]!
+
+    """
+    Lista de eventos relacionados que ocurrieron antes, después o en paralelo.
+    """
+    relatedEvents: [EventEvent!]!
+}

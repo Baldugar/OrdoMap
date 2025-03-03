@@ -1,0 +1,123 @@
+"""
+Clasifica los mundos según su naturaleza, origen y características principales.
+"""
+enum WorldType {
+    # Mundos físicos
+    """
+    Un mundo con características similares a la Tierra.
+    """
+    TERRESTRIAL
+
+    """
+    Un mundo desértico, árido y con escasez de agua.
+    """
+    DESERT
+
+    """
+    Un mundo oceánico con vastas masas de agua y pocas tierras emergidas.
+    """
+    OCEANIC
+
+    """
+    Un mundo cubierto de hielo y nieve con temperaturas extremas.
+    """
+    ICE
+
+    """
+    Un mundo volcánico, con actividad geológica intensa.
+    """
+    VOLCANIC
+
+    """
+    Un mundo gaseoso sin superficie sólida (tipo Júpiter o Saturno).
+    """
+    GAS_GIANT
+
+    # Mundos sobrenaturales o interdimensionales
+    """
+    Un mundo conectado a lo divino o gobernado por entidades celestiales.
+    """
+    DIVINE_REALM
+
+    """
+    Un mundo demoníaco, caótico o infernal.
+    """
+    HELLISH
+
+    """
+    Un mundo de sueños, ilusiones o materialización del pensamiento.
+    """
+    DREAM_REALM
+
+    """
+    Un mundo que existe en múltiples dimensiones simultáneamente.
+    """
+    MULTIDIMENSIONAL
+
+    """
+    Un mundo artificialmente construido, como una megaestructura o nave-mundo.
+    """
+    ARTIFICIAL
+
+    """
+    Un mundo apocalíptico o en ruinas, con civilizaciones colapsadas.
+    """
+    POST_APOCALYPTIC
+
+    """
+    Un mundo que ha sido abandonado o en el que la vida ha desaparecido.
+    """
+    DEAD_WORLD
+}
+
+"""
+Define la relación entre un mundo y un evento.
+Puede representar desastres, descubrimientos, guerras y más.
+"""
+enum WorldEventRelation {
+    """
+    El evento ocurrió en este mundo.
+    """
+    OCCURRED_HERE
+
+    """
+    El evento llevó a la destrucción parcial o total del mundo.
+    """
+    DEVASTATED
+
+    """
+    El evento llevó al descubrimiento del mundo por otras civilizaciones.
+    """
+    DISCOVERED
+
+    """
+    El evento alteró la realidad o estructura del mundo de manera significativa.
+    """
+    ALTERED
+}
+
+"""
+Define la relación entre dos mundos.
+Puede representar conexiones interdimensionales, origen compartido y más.
+"""
+enum WorldWorldRelation {
+    """
+    Los mundos están conectados por portales, magia o tecnología avanzada.
+    """
+    CONNECTED
+
+    """
+    Un mundo es una versión alternativa o divergente del otro.
+    """
+    ALTERNATE_VERSION
+
+    """
+    Uno de los mundos fue creado artificialmente a partir del otro.
+    """
+    CREATED_FROM
+
+    """
+    Los mundos comparten un mismo origen cósmico o mitológico.
+    """
+    SHARED_ORIGIN
+}

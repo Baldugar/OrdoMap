@@ -1,0 +1,123 @@
+"""
+Estructura para crear un nuevo evento dentro de un mundo.
+"""
+input CreateEventInput {
+    """
+    ID del mundo en el que ocurre el evento.
+    """
+    worldId: ID!
+
+    """
+    Nombre del evento.
+    """
+    name: String!
+
+    """
+    Descripción detallada del evento, incluyendo su impacto y contexto.
+    """
+    description: String!
+
+    """
+    Clasificación del evento según su naturaleza (batalla, descubrimiento, ritual, etc.).
+    """
+    type: EventType!
+
+    """
+    Indica la naturaleza del evento (planificado, accidental, fortuito, inevitable, etc.).
+    """
+    nature: EventNature!
+
+    # Duración y recurrencia
+    """
+    Fecha de inicio del evento en formato ISO 8601 (YYYY-MM-DD).
+    """
+    startDate: String!
+
+    """
+    Fecha de finalización del evento en formato ISO 8601 (YYYY-MM-DD).
+    """
+    endDate: String!
+
+    """
+    Indica si el evento es recurrente (true) o único (false).
+    """
+    isRecurring: Boolean!
+
+    """
+    Importancia del evento dentro de la historia (baja, media, alta).
+    """
+    significance: EventSignificance!
+
+    # Ubicación y contexto
+    """
+    Lista de ubicaciones donde ocurrió el evento.
+    """
+    locations: [ID!]!
+
+    """
+    Mundos en los que el evento tuvo un impacto.
+    """
+    worlds: [ID!]!
+}
+
+"""
+Estructura para actualizar un evento existente.
+"""
+input UpdateEventInput {
+    """
+    ID del evento a modificar.
+    """
+    id: ID!
+
+    """
+    Nuevo nombre del evento (opcional).
+    """
+    name: String
+
+    """
+    Nueva descripción del evento (opcional).
+    """
+    description: String
+
+    """
+    Modificar la clasificación del evento (opcional).
+    """
+    type: EventType
+
+    """
+    Modificar la naturaleza del evento (opcional).
+    """
+    nature: EventNature
+
+    # Duración y recurrencia
+    """
+    Modificar la fecha de inicio del evento (opcional).
+    """
+    startDate: String
+
+    """
+    Modificar la fecha de finalización del evento (opcional).
+    """
+    endDate: String
+
+    """
+    Modificar si el evento es recurrente (opcional).
+    """
+    isRecurring: Boolean
+
+    """
+    Modificar la importancia del evento en la historia (opcional).
+    """
+    significance: EventSignificance
+
+    # Ubicación y contexto
+    """
+    Modificar la lista de ubicaciones del evento (opcional).
+    """
+    locations: [ID!]
+
+    """
+    Modificar la lista de mundos afectados por el evento (opcional).
+    """
+    worlds: [ID!]
+}

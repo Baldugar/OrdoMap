@@ -1,0 +1,291 @@
+"""
+Define la relación entre dos criaturas.
+Puede representar jerarquía, rivalidad, simbiosis y otras interacciones naturales o mágicas.
+"""
+enum CreatureCreatureRelation {
+    # Relaciones de jerarquía y grupo
+    """
+    Una criatura es la líder de la otra dentro de una manada o sociedad.
+    """
+    LEADER
+
+    """
+    Las criaturas forman parte de la misma manada, colonia o sociedad.
+    """
+    PACK_MEMBER
+
+    """
+    Las criaturas tienen una relación parental (madre/padre e hijo).
+    """
+    PARENT
+
+    """
+    Las criaturas son hermanos de la misma especie o camada.
+    """
+    SIBLING
+
+    # Relaciones de cooperación y simbiosis
+    """
+    Las criaturas tienen una relación simbiótica en la que ambas se benefician.
+    """
+    SYMBIOTIC
+
+    """
+    Las criaturas tienen una relación de mutualismo, sin dependencia extrema.
+    """
+    MUTUALISTIC
+
+    """
+    Una criatura protege a la otra de forma voluntaria o instintiva.
+    """
+    PROTECTOR
+
+    # Relaciones de rivalidad y conflicto
+    """
+    Las criaturas compiten por territorio, alimento o dominio.
+    """
+    RIVAL
+
+    """
+    Las criaturas se consideran enemigas y se atacan mutuamente.
+    """
+    ENEMY
+
+    """
+    Una criatura es depredadora y caza a la otra como parte de su dieta.
+    """
+    PREDATOR
+
+    """
+    Una criatura es presa natural de la otra.
+    """
+    PREY
+
+    # Relaciones artificiales o mágicas
+    """
+    Una criatura fue creada artificialmente a partir de la otra (clonación, magia, experimentos).
+    """
+    CREATED_FROM
+
+    """
+    Las criaturas están conectadas por una maldición, pacto o lazo sobrenatural.
+    """
+    CURSED
+}
+
+"""
+Define la relación entre una criatura y una facción.
+Puede representar uso militar, veneración, domesticación o conflicto.
+"""
+enum CreatureFactionRelation {
+    # Relaciones de pertenencia y control
+    """
+    La criatura pertenece a la facción como una mascota, montura o bestia domesticada.
+    """
+    ASSET
+
+    """
+    La criatura es utilizada como arma de guerra o para defensa militar.
+    """
+    WAR_BEAST
+
+    """
+    La criatura es venerada como un símbolo sagrado o deidad.
+    """
+    WORSHIPPED
+
+    """
+    La criatura fue capturada y está bajo el control de la facción.
+    """
+    CAPTURED
+
+    # Relaciones de conflicto
+    """
+    La criatura es considerada una amenaza y la facción busca eliminarla.
+    """
+    HUNTED
+
+    """
+    La criatura ha sido una enemiga recurrente de la facción.
+    """
+    ENEMY
+
+    """
+    La criatura es vista como un símbolo de mala fortuna o castigo divino.
+    """
+    OMEN
+
+    # Relaciones de cooperación
+    """
+    La criatura actúa como aliada de la facción sin estar controlada.
+    """
+    ALLY
+
+    """
+    La criatura es utilizada como un experimento dentro de la facción.
+    """
+    EXPERIMENT
+}
+
+"""
+Define la relación entre una criatura y un evento.
+Puede representar participación en desastres, batallas, invocaciones y otros sucesos importantes.
+"""
+enum CreatureEventRelation {
+    # Participación activa
+    """
+    La criatura inició o causó el evento (ej. plaga, destrucción, guerra).
+    """
+    INITIATOR
+
+    """
+    La criatura participó en el evento, pero no fue la causa principal.
+    """
+    PARTICIPANT
+
+    """
+    La criatura fue invocada o traída al evento de forma mágica o tecnológica.
+    """
+    SUMMONED
+
+    # Relaciones pasivas o circunstanciales
+    """
+    La criatura fue testigo del evento sin intervenir directamente.
+    """
+    WITNESS
+
+    """
+    El evento afectó a la criatura, alterando su estado o comportamiento.
+    """
+    AFFECTED
+
+    # Relaciones de respuesta y resolución
+    """
+    La criatura intentó detener el evento o proteger a otros de sus efectos.
+    """
+    DEFENDER
+
+    """
+    La criatura fue rescatada durante el evento (ej. incendio, terremoto).
+    """
+    RESCUED
+
+    """
+    La criatura rescató a otros o ayudó a mitigar los efectos del evento.
+    """
+    SAVIOR
+
+    # Relaciones simbólicas o narrativas
+    """
+    El evento fue interpretado como una profecía relacionada con la criatura.
+    """
+    OMEN
+
+    """
+    El evento se originó como una maldición o consecuencia de la criatura.
+    """
+    CURSED
+}
+
+"""
+Define la relación entre una criatura y una ubicación.
+Puede representar su hábitat, migraciones, dominio territorial y más.
+"""
+enum CreatureLocationRelation {
+    # Hábitat y residencia
+    """
+    La criatura tiene su hábitat natural en esta ubicación.
+    """
+    NATIVE
+
+    """
+    La criatura reside en esta ubicación, pero no es su hábitat original.
+    """
+    RESIDENT
+
+    """
+    La criatura migró a esta ubicación desde otro lugar.
+    """
+    MIGRATED
+
+    # Control y territorio
+    """
+    La criatura reclama esta ubicación como su dominio y la protege.
+    """
+    TERRITORIAL
+
+    """
+    La criatura está atrapada en esta ubicación contra su voluntad.
+    """
+    TRAPPED
+
+    """
+    La criatura fue exiliada de esta ubicación y no puede regresar.
+    """
+    EXILED
+
+    # Relaciones con la ubicación
+    """
+    La criatura es una amenaza para la ubicación y causa destrucción.
+    """
+    THREAT
+
+    """
+    La criatura protege la ubicación o mantiene su equilibrio ecológico.
+    """
+    GUARDIAN
+
+    """
+    La criatura es un símbolo de la ubicación, ya sea mitológico o cultural.
+    """
+    SYMBOL
+}
+
+"""
+Define la relación entre una criatura y un mundo.
+Puede representar origen, influencia interdimensional, exilio y más.
+"""
+enum CreatureWorldRelation {
+    # Origen y pertenencia
+    """
+    La criatura es nativa de este mundo.
+    """
+    NATIVE
+
+    """
+    La criatura no pertenece a este mundo y proviene de otro plano o dimensión.
+    """
+    OUTSIDER
+
+    """
+    La criatura es el resultado de una mutación o adaptación a este mundo.
+    """
+    ADAPTED
+
+    # Relaciones de influencia
+    """
+    La criatura tiene un impacto significativo en la ecología o historia del mundo.
+    """
+    INFLUENCER
+
+    """
+    La criatura fue convocada a este mundo a través de medios sobrenaturales.
+    """
+    SUMMONED
+
+    """
+    La criatura protege el mundo o mantiene su equilibrio.
+    """
+    GUARDIAN
+
+    # Relaciones de conflicto y destrucción
+    """
+    La criatura amenaza la existencia del mundo.
+    """
+    DESTROYER
+
+    """
+    La criatura fue exiliada del mundo y no puede regresar.
+    """
+    EXILED
+}

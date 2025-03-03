@@ -1,0 +1,398 @@
+"""
+Define en qué parte del cuerpo o en qué espacio del inventario se equipa un ítem.
+Incluye armaduras, armas, accesorios y objetos especiales.
+"""
+enum ItemSlot {
+    # Equipamiento en la cabeza y rostro
+    """
+    Casco, corona o cualquier tipo de protección para la cabeza.
+    """
+    HEAD
+
+    """
+    Pendientes o accesorios equipados en las orejas.
+    """
+    EARS
+
+    """
+    Collares, amuletos u objetos usados en el cuello.
+    """
+    NECK
+
+    # Equipamiento en la parte superior del cuerpo
+    """
+    Hombreras o protecciones colocadas en los hombros.
+    """
+    SHOULDERS
+
+    """
+    Capa, manto o cualquier accesorio usado en la espalda.
+    """
+    BACK
+
+    """
+    Protecciones o equipamiento en los brazos (manguitos, brazales, etc.).
+    """
+    ARMS
+
+    """
+    Muñequeras, pulseras o protecciones en las muñecas.
+    """
+    WRISTS
+
+    """
+    Guantes, garras o cualquier ítem usado en las manos.
+    """
+    HANDS
+
+    """
+    Anillos y sortijas usados en los dedos.
+    """
+    FINGERS
+
+    """
+    Armadura o vestimenta que cubre el torso del personaje.
+    """
+    CHEST
+
+    """
+    Cinturones, fajines u otros objetos equipados en la cintura.
+    """
+    WAIST
+
+    # Equipamiento en las piernas y pies
+    """
+    Armaduras o vestimenta que cubre las piernas completas.
+    """
+    LEGS
+
+    """
+    Equipamiento para la parte inferior de las piernas (grebas, espinilleras).
+    """
+    LOWER_LEGS
+
+    """
+    Equipamiento para la parte superior de las piernas (musleras, faldones).
+    """
+    UPPER_LEGS
+
+    """
+    Protecciones específicas para las rodillas (rodilleras).
+    """
+    KNEES
+
+    """
+    Botas, sandalias o cualquier calzado usado en los pies.
+    """
+    FEET
+
+    # Equipamiento de armas y combate
+    """
+    Arma de combate cuerpo a cuerpo de una mano.
+    """
+    MELEE_ONE_HAND
+
+    """
+    Arma de combate cuerpo a cuerpo de dos manos.
+    """
+    MELEE_TWO_HAND
+
+    """
+    Arma a distancia de una mano (pistolas, dagas arrojadizas).
+    """
+    RANGED_ONE_HAND
+
+    """
+    Arma a distancia de dos manos (arcos, ballestas, rifles).
+    """
+    RANGED_TWO_HAND
+
+    """
+    Arma híbrida de una mano (arma que puede ser usada cuerpo a cuerpo y a distancia).
+    """
+    HYBRID_ONE_HAND
+
+    """
+    Arma híbrida de dos manos (arma de uso mixto con ambas manos).
+    """
+    HYBRID_TWO_HAND
+
+    """
+    Escudos y defensas que se pueden equipar en una mano.
+    """
+    SHIELD
+
+    # Accesorios y objetos especiales
+    """
+    Tabardos o emblemas que representan facciones o grupos.
+    """
+    TABARD
+
+    """
+    Camisas y prendas interiores que no afectan la armadura.
+    """
+    SHIRT
+
+    """
+    Objetos especiales con habilidades activas o pasivas.
+    """
+    TRINKET
+
+    """
+    Reliquias o artefactos sagrados de gran poder.
+    """
+    RELIC
+}
+
+"""
+Clasifica los ítems según su función o propósito dentro del mundo ficticio.
+"""
+enum ItemType {
+    # Armas y equipo de combate
+    """
+    Un arma utilizada en combate (espada, lanza, arco, etc.).
+    """
+    WEAPON
+
+    """
+    Armadura o escudo diseñado para la protección del usuario.
+    """
+    ARMOR
+
+    """
+    Accesorios de combate como anillos, amuletos, brazales.
+    """
+    COMBAT_ACCESSORY
+
+    # Objetos mágicos y sobrenaturales
+    """
+    Un artefacto mágico con habilidades únicas.
+    """
+    ARTIFACT
+
+    """
+    Un pergamino o tomo con conocimientos ocultos o conjuros.
+    """
+    SPELLBOOK
+
+    """
+    Un ítem maldito que tiene efectos negativos sobre su portador.
+    """
+    CURSED_ITEM
+
+    # Ítems utilitarios
+    """
+    Herramientas de uso general como llaves, brújulas, o dagas multiusos.
+    """
+    TOOL
+
+    """
+    Pociones y consumibles que otorgan efectos temporales.
+    """
+    POTION
+
+    """
+    Un mapa que proporciona información sobre el mundo o una región.
+    """
+    MAP
+
+    # Objetos históricos y simbólicos
+    """
+    Un ítem con importancia histórica o cultural.
+    """
+    RELIC
+
+    """
+    Un documento escrito, como un tratado, un contrato o un diario.
+    """
+    DOCUMENT
+
+    """
+    Un objeto de alto valor simbólico o representativo de una facción.
+    """
+    SYMBOL
+}
+
+"""
+Clasifica los ítems según su rareza dentro del mundo ficticio.
+"""
+enum ItemRarity {
+    """
+    Ítems comunes y de fácil acceso en el mundo.
+    """
+    COMMON
+
+    """
+    Ítems poco comunes, difíciles de encontrar pero no únicos.
+    """
+    UNCOMMON
+
+    """
+    Ítems raros, con habilidades especiales o historias únicas.
+    """
+    RARE
+
+    """
+    Ítems extremadamente raros, con gran poder o significado.
+    """
+    LEGENDARY
+
+    """
+    Ítems únicos, con una sola existencia en el mundo.
+    """
+    UNIQUE
+}
+
+"""
+Define el estado físico de un ítem, indicando su grado de desgaste o conservación.
+"""
+enum ItemCondition {
+    """
+    El ítem está en perfectas condiciones, sin daños ni desgaste.
+    """
+    PRISTINE
+
+    """
+    El ítem muestra signos de uso, pero aún está en buen estado.
+    """
+    USED
+
+    """
+    El ítem está dañado o desgastado, pero sigue siendo funcional.
+    """
+    WORN
+
+    """
+    El ítem está roto o inutilizable en su estado actual.
+    """
+    BROKEN
+
+    """
+    El ítem ha sido encantado o alterado mágicamente.
+    """
+    ENCHANTED
+
+    """
+    El ítem está corroído o en proceso de deterioro.
+    """
+    CORRODED
+}
+
+"""
+Define la relación entre dos ítems.
+Puede representar combinaciones, piezas de un set, transformación y otras interacciones.
+"""
+enum ItemItemRelation {
+    # Relaciones de combinación y mejora
+    """
+    Los ítems se pueden combinar para formar un nuevo objeto.
+    """
+    COMBINABLE
+
+    """
+    Uno de los ítems es un componente necesario para otro.
+    """
+    COMPONENT
+
+    """
+    Los ítems forman parte de un set o conjunto especial.
+    """
+    SET_ITEM
+
+    """
+    Un ítem puede evolucionar en otro mediante uso o mejora.
+    """
+    EVOLUTION
+
+    # Relaciones de influencia
+    """
+    Los ítems son opuestos o tienen efectos que se anulan mutuamente.
+    """
+    OPPOSITE
+
+    """
+    Los ítems tienen una conexión histórica o mitológica.
+    """
+    LINKED_HISTORY
+
+    """
+    Uno de los ítems fue creado a partir del otro.
+    """
+    DERIVED_FROM
+}
+
+"""
+Define la relación entre un ítem y una ubicación.
+Puede representar su almacenamiento, hallazgo o pérdida.
+"""
+enum ItemLocationRelation {
+    # Relaciones de posesión y almacenamiento
+    """
+    El ítem está guardado o almacenado en la ubicación.
+    """
+    STORED
+
+    """
+    El ítem fue encontrado en la ubicación.
+    """
+    DISCOVERED
+
+    """
+    El ítem está oculto o sellado en la ubicación.
+    """
+    SEALED
+
+    """
+    El ítem está perdido o abandonado en la ubicación.
+    """
+    LOST
+
+    # Relaciones de creación y destrucción
+    """
+    El ítem fue forjado, creado o ensamblado en la ubicación.
+    """
+    CREATED
+
+    """
+    El ítem fue destruido o desmantelado en la ubicación.
+    """
+    DESTROYED
+}
+
+"""
+Define la relación entre un ítem y un evento.
+Puede representar su uso, descubrimiento, destrucción y más.
+"""
+enum ItemEventRelation {
+    # Relaciones de descubrimiento y posesión
+    """
+    El ítem fue descubierto o adquirido durante el evento.
+    """
+    DISCOVERED
+
+    """
+    El ítem fue entregado o transferido a otra entidad en el evento.
+    """
+    TRADED
+
+    """
+    El ítem fue robado o perdido durante el evento.
+    """
+    STOLEN
+
+    # Relaciones de influencia y uso
+    """
+    El ítem fue utilizado activamente en el evento.
+    """
+    USED
+
+    """
+    El ítem fue clave para el desarrollo o desenlace del evento.
+    """
+    KEY_ITEM
+
+    """
+    El ítem fue destruido o inutilizado durante el evento.
+    """
+    DESTROYED
+}

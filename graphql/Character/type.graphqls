@@ -1,0 +1,356 @@
+"""
+Representa un personaje en el mundo ficticio.
+Incluye datos generales, atributos físicos, estado de vida y relaciones con otras entidades.
+"""
+type Character implements Entity {
+    # Identificación y metadatos
+    """
+    Identificador único del personaje.
+    """
+    id: ID! @goTag(key: "json", value: "_key")
+
+    """
+    Fecha de creación del personaje en el sistema (ISO 8601).
+    """
+    createdAt: String!
+
+    """
+    Fecha de última actualización del personaje en el sistema (ISO 8601).
+    """
+    updatedAt: String!
+
+    # Información general
+    """
+    Nombre del personaje.
+    """
+    name: String!
+
+    """
+    Descripción del personaje, incluyendo trasfondo o detalles relevantes.
+    """
+    description: String!
+
+    """
+    Tipo de entidad, útil para clasificar personajes en el sistema.
+    """
+    type: String!
+
+    # Atributos físicos y estado
+    """
+    Fecha de nacimiento del personaje en formato ISO 8601 (YYYY-MM-DD).
+    """
+    birthDate: String!
+
+    """
+    Altura del personaje en metros (m).
+    """
+    height: Float!
+
+    """
+    Peso del personaje en kilogramos (kg).
+    """
+    weight: Float!
+
+    """
+    Indica si el personaje está vivo (true) o muerto (false).
+    """
+    isAlive: Boolean!
+
+    """
+    Indica si el personaje es un protagonista o figura central en la historia.
+    """
+    isMain: Boolean!
+
+    """
+    Alineamiento moral o ético del personaje (según el sistema usado).
+    """
+    alignment: Alignment
+
+    # Relaciones con otras entidades
+    """
+    Lista de relaciones con otros personajes, incluyendo amistad, enemistad o parentesco.
+    """
+    characters: [CharacterCharacter!]!
+
+    """
+    Lista de relaciones del personaje con criaturas, incluyendo domesticación o conflicto.
+    """
+    creatures: [CharacterCreature!]!
+
+    """
+    Lista de relaciones del personaje con facciones, como afiliaciones o enemistades.
+    """
+    factions: [CharacterFaction!]!
+
+    """
+    Lista de relaciones del personaje con eventos, como participación o influencia.
+    """
+    events: [CharacterEvent!]!
+
+    """
+    Lista de relaciones del personaje con ítems, como posesión, uso o creación.
+    """
+    items: [CharacterItem!]!
+
+    """
+    Lista de relaciones del personaje con ubicaciones, como residencia o exploración.
+    """
+    locations: [CharacterLocation!]!
+
+    """
+    Lista de relaciones del personaje con mundos, como origen, exilio o conquista.
+    """
+    worlds: [CharacterWorld!]!
+}
+
+"""
+Define la relación entre dos personajes.
+Puede incluir amistad, enemistad, parentesco y otros vínculos narrativos.
+"""
+type CharacterCharacter {
+    """
+    El id de la relación entre personajes.
+    """
+    id: ID! @goTag(key: "json", value: "_key")
+
+    """
+    El personaje con el que se establece la relación.
+    """
+    character: Character!
+
+    """
+    Nivel de relación entre los personajes, desde amistad hasta enemistad extrema.
+    """
+    characterRelationLevel: CharacterRelationLevel!
+
+    """
+    Relación familiar si existe un vínculo de parentesco (opcional).
+    """
+    familyRelation: FamilyRelation
+
+    """
+    Fecha en que comenzó la relación (opcional).
+    """
+    startDate: String
+
+    """
+    Fecha en que terminó la relación (opcional).
+    """
+    endDate: String
+}
+
+"""
+Representa la relación entre un personaje y una criatura.
+Puede incluir domesticación, caza, invocación y otros vínculos narrativos.
+"""
+type CharacterCreature {
+    """
+    El id de la relación entre personajes.
+    """
+    id: ID! @goTag(key: "json", value: "_key")
+
+    """
+    El personaje que tiene la relación con la criatura.
+    """
+    character: Character!
+
+    """
+    La criatura con la que el personaje está relacionado.
+    """
+    creature: Creature!
+
+    """
+    Tipo de relación entre el personaje y la criatura (dueño, enemigo, protector, etc.).
+    """
+    relation: CharacterCreatureRelation!
+
+    """
+    Fecha en que comenzó la relación (opcional).
+    """
+    startDate: String
+
+    """
+    Fecha en que terminó la relación (opcional).
+    """
+    endDate: String
+}
+
+"""
+Define la relación entre un personaje y una facción.
+Incluye afiliaciones, liderazgos, enemistades e interacciones indirectas.
+"""
+type CharacterFaction {
+    """
+    El id de la relación entre personajes.
+    """
+    id: ID! @goTag(key: "json", value: "_key")
+
+    """
+    El personaje que tiene la relación con la facción.
+    """
+    character: Character!
+
+    """
+    La facción con la que el personaje tiene una relación.
+    """
+    faction: Faction!
+
+    """
+    Tipo de relación entre el personaje y la facción (miembro, líder, enemigo, etc.).
+    """
+    relation: CharacterFactionRelation!
+
+    """
+    Fecha en que comenzó la relación (opcional).
+    """
+    startDate: String
+
+    """
+    Fecha en que terminó la relación (opcional).
+    """
+    endDate: String
+}
+
+"""
+Define la relación entre un personaje y un evento.
+Puede representar participación directa, testimonio, organización o influencia.
+"""
+type CharacterEvent {
+    """
+    El id de la relación entre personajes.
+    """
+    id: ID! @goTag(key: "json", value: "_key")
+
+    """
+    El personaje que tiene la relación con el evento.
+    """
+    character: Character!
+
+    """
+    El evento con el que el personaje tiene una relación.
+    """
+    event: Event!
+
+    """
+    Tipo de relación entre el personaje y el evento (participante, organizador, testigo, etc.).
+    """
+    relation: CharacterEventRelation!
+
+    """
+    Fecha en que comenzó la relación (opcional).
+    """
+    startDate: String
+
+    """
+    Fecha en que terminó la relación (opcional).
+    """
+    endDate: String
+}
+
+"""
+Define la relación entre un personaje y un ítem.
+Puede representar posesión, uso, creación, destrucción o influencia del objeto en el personaje.
+"""
+type CharacterItem {
+    """
+    El id de la relación entre personajes.
+    """
+    id: ID! @goTag(key: "json", value: "_key")
+
+    """
+    El personaje que tiene la relación con el ítem.
+    """
+    character: Character!
+
+    """
+    El ítem con el que el personaje tiene una relación.
+    """
+    item: Item!
+
+    """
+    Tipo de relación entre el personaje y el ítem (dueño, usuario, creador, etc.).
+    """
+    relation: CharacterItemRelation!
+
+    """
+    Fecha en que comenzó la relación (opcional).
+    """
+    startDate: String
+
+    """
+    Fecha en que terminó la relación (opcional).
+    """
+    endDate: String
+}
+
+"""
+Define la relación entre un personaje y una ubicación.
+Puede representar origen, residencia, gobierno, exploración o conflicto con el lugar.
+"""
+type CharacterLocation {
+    """
+    El id de la relación entre personajes.
+    """
+    id: ID! @goTag(key: "json", value: "_key")
+
+    """
+    El personaje que tiene la relación con la ubicación.
+    """
+    character: Character!
+
+    """
+    La ubicación con la que el personaje tiene una relación.
+    """
+    location: Location!
+
+    """
+    Tipo de relación entre el personaje y la ubicación (residente, explorador, exiliado, etc.).
+    """
+    relation: CharacterLocationRelation!
+
+    """
+    Fecha en que comenzó la relación (opcional).
+    """
+    startDate: String
+
+    """
+    Fecha en que terminó la relación (opcional).
+    """
+    endDate: String
+}
+
+"""
+Define la relación entre un personaje y un mundo.
+Puede representar ciudadanía, exploración, influencia o enemistad con el mundo.
+"""
+type CharacterWorld {
+    """
+    El id de la relación entre personajes.
+    """
+    id: ID! @goTag(key: "json", value: "_key")
+
+    """
+    El personaje que tiene la relación con el mundo.
+    """
+    character: Character!
+
+    """
+    El mundo con el que el personaje tiene una relación.
+    """
+    world: World!
+
+    """
+    Tipo de relación entre el personaje y el mundo (nativo, explorador, conquistador, etc.).
+    """
+    relation: CharacterWorldRelation!
+
+    """
+    Fecha en que comenzó la relación (opcional).
+    """
+    startDate: String
+
+    """
+    Fecha en que terminó la relación (opcional).
+    """
+    endDate: String
+}

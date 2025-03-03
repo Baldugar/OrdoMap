@@ -1,0 +1,119 @@
+"""
+Estructura para crear una nueva facción dentro de un mundo.
+"""
+input CreateFactionInput {
+    """
+    ID del mundo al que pertenece la facción.
+    """
+    worldId: ID!
+
+    """
+    Nombre de la facción.
+    """
+    name: String!
+
+    """
+    Descripción de la facción, incluyendo su historia, cultura y propósito.
+    """
+    description: String!
+
+    """
+    Clasificación de la facción según su estructura y propósito.
+    """
+    type: FactionType!
+
+    """
+    Ideología, valores o principios que rigen a la facción.
+    """
+    ideology: String!
+
+    """
+    Estatus actual de la facción (activa, disuelta, exiliada, etc.).
+    """
+    status: FactionStatus!
+
+    """
+    Fecha de fundación de la facción en formato ISO 8601 (YYYY-MM-DD).
+    """
+    foundedDate: String!
+
+    """
+    Fecha de disolución de la facción (opcional, en caso de que ya no exista).
+    """
+    disbandedDate: String
+
+    """
+    Nivel de influencia de la facción en la historia o sociedad.
+    """
+    influence: FactionInfluence!
+
+    """
+    Lista de ubicaciones donde la facción tiene presencia, dominio o influencia.
+    """
+    locations: [ID!]!
+
+    """
+    Lista de mundos donde la facción tiene presencia, influencia o ha sido exiliada.
+    """
+    worlds: [ID!]!
+}
+
+"""
+Estructura para actualizar una facción existente.
+"""
+input UpdateFactionInput {
+    """
+    ID de la facción a modificar.
+    """
+    id: ID!
+
+    """
+    Nuevo nombre de la facción (opcional).
+    """
+    name: String
+
+    """
+    Nueva descripción de la facción (opcional).
+    """
+    description: String
+
+    """
+    Modificar la clasificación de la facción (opcional).
+    """
+    type: FactionType
+
+    """
+    Modificar la ideología de la facción (opcional).
+    """
+    ideology: String
+
+    """
+    Modificar el estatus actual de la facción (opcional).
+    """
+    status: FactionStatus
+
+    """
+    Modificar la fecha de fundación de la facción (opcional).
+    """
+    foundedDate: String
+
+    """
+    Modificar la fecha de disolución de la facción (opcional).
+    """
+    disbandedDate: String
+
+    """
+    Modificar el nivel de influencia de la facción (opcional).
+    """
+    influence: FactionInfluence
+
+    """
+    Modificar las ubicaciones donde la facción tiene presencia (opcional).
+    """
+    locations: [ID!]
+
+    """
+    Modificar los mundos donde la facción tiene influencia (opcional).
+    """
+    worlds: [ID!]
+}

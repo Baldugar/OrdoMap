@@ -1,0 +1,306 @@
+"""
+Representa una criatura dentro del mundo ficticio.
+Incluye datos generales, atributos físicos, hábitat y relaciones con otras entidades.
+"""
+type Creature implements Entity {
+    # Identificación y metadatos
+    """
+    Identificador único de la criatura.
+    """
+    id: ID! @goTag(key: "json", value: "_key")
+
+    """
+    Fecha de creación de la criatura en el sistema (ISO 8601).
+    """
+    createdAt: String!
+
+    """
+    Fecha de última actualización de la criatura en el sistema (ISO 8601).
+    """
+    updatedAt: String!
+
+    # Información general
+    """
+    Nombre de la criatura.
+    """
+    name: String!
+
+    """
+    Descripción de la criatura, incluyendo características únicas y comportamiento.
+    """
+    description: String!
+
+    """
+    Tipo de entidad, útil para clasificar criaturas en el sistema.
+    """
+    type: String!
+
+    """
+    Especie o categoría de la criatura (dragón, gólem, quimera, etc.).
+    """
+    species: String!
+
+    """
+    Nivel de inteligencia de la criatura (bestia, sapiente, semisapiente, etc.).
+    """
+    intelligenceLevel: String!
+
+    # Atributos físicos y estado
+    """
+    Altura de la criatura en metros (m).
+    """
+    height: Float!
+
+    """
+    Peso de la criatura en kilogramos (kg).
+    """
+    weight: Float!
+
+    # Atributos físicos y estado
+    """
+    Fecha de nacimiento de la criatura en formato ISO 8601 (YYYY-MM-DD).
+    """
+    birthDate: String!
+
+    """
+    Indica si la criatura está viva (true) o muerta (false).
+    """
+    isAlive: Boolean!
+
+    """
+    Esperanza de vida aproximada de la criatura en años.
+    """
+    lifespan: Int
+
+    """
+    Indica si la criatura es única o pertenece a una especie con múltiples individuos.
+    """
+    isUnique: Boolean!
+
+    # Hábitat y comportamiento
+    """
+    Ambiente donde la criatura vive (bosques, montañas, océanos, etc.).
+    """
+    habitat: String!
+
+    """
+    Comportamiento de la criatura (pacífica, territorial, agresiva, etc.).
+    """
+    behavior: String!
+
+    """
+    Dieta de la criatura (carnívora, herbívora, omnívora, etc.).
+    """
+    diet: String!
+
+    """
+    Lista de habilidades especiales que posee la criatura (aliento de fuego, regeneración, telepatía, etc.).
+    """
+    abilities: [String!]!
+
+    # Relaciones con otras entidades
+    """
+    Lista de relaciones de la criatura con personajes, incluyendo domesticación o conflicto.
+    """
+    characters: [CharacterCreature!]!
+
+    """
+    Lista de relaciones de la criatura con otras criaturas, incluyendo jerarquías o rivalidades.
+    """
+    creatures: [CreatureCreature!]!
+
+    """
+    Lista de relaciones de la criatura con facciones, como uso militar o veneración.
+    """
+    factions: [CreatureFaction!]!
+
+    """
+    Lista de relaciones de la criatura con eventos, como participación en batallas o desastres naturales.
+    """
+    events: [CreatureEvent!]!
+
+    """
+    Lista de relaciones de la criatura con ubicaciones, como hábitat o migraciones.
+    """
+    locations: [CreatureLocation!]!
+
+    """
+    Lista de relaciones de la criatura con mundos, como su origen o influencia interdimensional.
+    """
+    worlds: [CreatureWorld!]!
+}
+
+"""
+Define la relación entre dos criaturas.
+Puede representar jerarquía, rivalidad, simbiosis y otras interacciones naturales o mágicas.
+"""
+type CreatureCreature {
+    """
+    El id de la relación entre personajes.
+    """
+    id: ID! @goTag(key: "json", value: "_key")
+
+    """
+    La criatura con la que se establece la relación.
+    """
+    creature: Creature!
+
+    """
+    Tipo de relación entre ambas criaturas (jerárquica, depredador-presa, simbiótica, etc.).
+    """
+    relation: CreatureCreatureRelation!
+
+    """
+    Fecha en que comenzó la relación (opcional).
+    """
+    startDate: String
+
+    """
+    Fecha en que terminó la relación (opcional).
+    """
+    endDate: String
+}
+
+"""
+Define la relación entre una criatura y una facción.
+Puede representar uso militar, veneración, domesticación o conflicto.
+"""
+type CreatureFaction {
+    """
+    El id de la relación entre personajes.
+    """
+    id: ID! @goTag(key: "json", value: "_key")
+
+    """
+    La criatura con la que la facción tiene una relación.
+    """
+    creature: Creature!
+
+    """
+    La facción con la que la criatura tiene una relación.
+    """
+    faction: Faction!
+
+    """
+    Tipo de relación entre la criatura y la facción (mascota, bestia de guerra, símbolo sagrado, etc.).
+    """
+    relation: CreatureFactionRelation!
+
+    """
+    Fecha en que comenzó la relación (opcional).
+    """
+    startDate: String
+
+    """
+    Fecha en que terminó la relación (opcional).
+    """
+    endDate: String
+}
+
+"""
+Define la relación entre una criatura y un evento.
+Puede representar participación en desastres, batallas, invocaciones y otros sucesos importantes.
+"""
+type CreatureEvent {
+    """
+    El id de la relación entre personajes.
+    """
+    id: ID! @goTag(key: "json", value: "_key")
+
+    """
+    La criatura con la que el evento tiene una relación.
+    """
+    creature: Creature!
+
+    """
+    El evento con el que la criatura tiene una relación.
+    """
+    event: Event!
+
+    """
+    Tipo de relación entre la criatura y el evento (iniciador, participante, testigo, etc.).
+    """
+    relation: CreatureEventRelation!
+
+    """
+    Fecha en que comenzó la relación (opcional).
+    """
+    startDate: String
+
+    """
+    Fecha en que terminó la relación (opcional).
+    """
+    endDate: String
+}
+
+"""
+Define la relación entre una criatura y una ubicación.
+Puede representar su hábitat, migraciones, dominio territorial y más.
+"""
+type CreatureLocation {
+    """
+    El id de la relación entre personajes.
+    """
+    id: ID! @goTag(key: "json", value: "_key")
+
+    """
+    La criatura con la que la ubicación tiene una relación.
+    """
+    creature: Creature!
+
+    """
+    La ubicación con la que la criatura tiene una relación.
+    """
+    location: Location!
+
+    """
+    Tipo de relación entre la criatura y la ubicación (hábitat, migración, dominio territorial, etc.).
+    """
+    relation: CreatureLocationRelation!
+
+    """
+    Fecha en que comenzó la relación (opcional).
+    """
+    startDate: String
+
+    """
+    Fecha en que terminó la relación (opcional).
+    """
+    endDate: String
+}
+
+"""
+Define la relación entre una criatura y un mundo.
+Puede representar origen, influencia interdimensional, exilio y más.
+"""
+type CreatureWorld {
+    """
+    El id de la relación entre personajes.
+    """
+    id: ID! @goTag(key: "json", value: "_key")
+
+    """
+    La criatura con la que el mundo tiene una relación.
+    """
+    creature: Creature!
+
+    """
+    El mundo con el que la criatura tiene una relación.
+    """
+    world: World!
+
+    """
+    Tipo de relación entre la criatura y el mundo (nativa, invocada, exiliada, etc.).
+    """
+    relation: CreatureWorldRelation!
+
+    """
+    Fecha en que comenzó la relación (opcional).
+    """
+    startDate: String
+
+    """
+    Fecha en que terminó la relación (opcional).
+    """
+    endDate: String
+}

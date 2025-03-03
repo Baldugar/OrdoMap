@@ -1,0 +1,124 @@
+"""
+Mutaciones para crear, actualizar y eliminar universos.
+"""
+type Mutation {
+    """
+    Crea un nuevo personaje dentro de un mundo.
+    """
+    createCharacter(input: CreateCharacterInput!): Character!
+
+    """
+    Actualiza los datos de un personaje existente.
+    """
+    updateCharacter(input: UpdateCharacterInput!): Character!
+
+    """
+    Elimina un personaje por su ID.
+    """
+    deleteCharacter(id: ID!): Boolean!
+
+    """
+    Crea una nueva criatura dentro de un mundo.
+    """
+    createCreature(input: CreateCreatureInput!): Creature!
+
+    """
+    Actualiza los datos de una criatura existente.
+    """
+    updateCreature(input: UpdateCreatureInput!): Creature!
+
+    """
+    Elimina una criatura por su ID.
+    """
+    deleteCreature(id: ID!): Boolean!
+
+    """
+    Crea un nuevo ítem dentro de un mundo.
+    """
+    createItem(input: CreateItemInput!): Item!
+
+    """
+    Actualiza los datos de un ítem existente.
+    """
+    updateItem(input: UpdateItemInput!): Item!
+
+    """
+    Elimina un ítem por su ID.
+    """
+    deleteItem(id: ID!): Boolean!
+
+    """
+    Crea una nueva ubicación dentro de un mundo.
+    """
+    createLocation(input: CreateLocationInput!): Location!
+
+    """
+    Actualiza los datos de una ubicación existente.
+    """
+    updateLocation(input: UpdateLocationInput!): Location!
+
+    """
+    Elimina una ubicación por su ID.
+    """
+    deleteLocation(id: ID!): Boolean!
+
+    """
+    Crea una nueva facción dentro de un mundo.
+    """
+    createFaction(input: CreateFactionInput!): Faction!
+
+    """
+    Actualiza los datos de una facción existente.
+    """
+    updateFaction(input: UpdateFactionInput!): Faction!
+
+    """
+    Elimina una facción por su ID.
+    """
+    deleteFaction(id: ID!): Boolean!
+
+    """
+    Crea un nuevo evento dentro de un mundo.
+    """
+    createEvent(input: CreateEventInput!): Event!
+
+    """
+    Actualiza los datos de un evento existente.
+    """
+    updateEvent(input: UpdateEventInput!): Event!
+
+    """
+    Elimina un evento por su ID.
+    """
+    deleteEvent(id: ID!): Boolean!
+
+    """
+    Crea un nuevo mundo dentro de un universo.
+    """
+    createWorld(input: CreateWorldInput!): World!
+
+    """
+    Actualiza los datos de un mundo existente.
+    """
+    updateWorld(input: UpdateWorldInput!): World!
+
+    """
+    Elimina un mundo por su ID.
+    """
+    deleteWorld(id: ID!): Boolean!
+
+    """
+    Crea un nuevo universo.
+    """
+    createUniverse(input: CreateUniverseInput!): Universe!
+
+    """
+    Actualiza los datos de un universo existente.
+    """
+    updateUniverse(input: UpdateUniverseInput!): Universe!
+
+    """
+    Elimina un universo por su ID.
+    """
+    deleteUniverse(id: ID!): Boolean!
+}
